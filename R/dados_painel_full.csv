@@ -1,0 +1,229 @@
+mes_lancamento,fase_da_despesa,nome_do_gasto,gasto_item,ultimo_dia_mes
+2021-04-01,Pagamento,Aquisição de Vacinas,4605417206,2021-04-30
+2021-04-01,Pagamento,Auxílio Emergencial a Pessoas em Situação de Vulnerabilidade,9722566060,2021-04-30
+2021-04-01,Pagamento,Benefício Emergencial de Manutenção do Emprego e da Renda,631103974,2021-04-30
+2021-04-01,Pagamento,Despesas Adicionais do Ministério da Saúde e Demais Ministérios,5144756813,2021-04-30
+2021-04-01,Pagamento,Financiamento da Infraestrutura Turística,375000000,2021-04-30
+2021-04-01,Previsão,Aquisição de Vacinas,22289556962,2021-04-30
+2021-04-01,Previsão,Auxílio Emergencial a Pessoas em Situação de Vulnerabilidade,44863025231,2021-04-30
+2021-04-01,Previsão,Benefício Emergencial de Manutenção do Emprego e da Renda,11672815623,2021-04-30
+2021-04-01,Previsão,Despesas Adicionais do Ministério da Saúde e Demais Ministérios,14440668841,2021-04-30
+2021-04-01,Previsão,Financiamento da Infraestrutura Turística,1922682647,2021-04-30
+2021-02-01,Pagamento,Aquisição de Vacinas,719573748,2021-02-28
+2021-02-01,Pagamento,Auxílio Emergencial a Pessoas em Situação de Vulnerabilidade,356745562,2021-02-28
+2021-02-01,Pagamento,Benefício Emergencial de Manutenção do Emprego e da Renda,393792428,2021-02-28
+2021-02-01,Pagamento,Despesas Adicionais do Ministério da Saúde e Demais Ministérios,1614615195,2021-02-28
+2021-02-01,Pagamento,Financiamento da Infraestrutura Turística,125000000,2021-02-28
+2021-02-01,Previsão,Aquisição de Vacinas,22289950484,2021-02-28
+2021-02-01,Previsão,Auxílio Emergencial a Pessoas em Situação de Vulnerabilidade,2287425231,2021-02-28
+2021-02-01,Previsão,Benefício Emergencial de Manutenção do Emprego e da Renda,8049068421,2021-02-28
+2021-02-01,Previsão,Despesas Adicionais do Ministério da Saúde e Demais Ministérios,5933956498,2021-02-28
+2021-02-01,Previsão,Financiamento da Infraestrutura Turística,1922682647,2021-02-28
+2021-01-01,Pagamento,Aquisição de Vacinas,75866144,2021-01-31
+2021-01-01,Pagamento,Auxílio Emergencial a Pessoas em Situação de Vulnerabilidade,279137576,2021-01-31
+2021-01-01,Pagamento,Benefício Emergencial de Manutenção do Emprego e da Renda,345980053,2021-01-31
+2021-01-01,Pagamento,Despesas Adicionais do Ministério da Saúde e Demais Ministérios,1322441272,2021-01-31
+2021-01-01,Pagamento,Financiamento da Infraestrutura Turística,125000000,2021-01-31
+2021-01-01,Previsão,Aquisição de Vacinas,22290042430,2021-01-31
+2021-01-01,Previsão,Auxílio Emergencial a Pessoas em Situação de Vulnerabilidade,2287425231,2021-01-31
+2021-01-01,Previsão,Benefício Emergencial de Manutenção do Emprego e da Renda,8049068421,2021-01-31
+2021-01-01,Previsão,Despesas Adicionais do Ministério da Saúde e Demais Ministérios,3368985146,2021-01-31
+2021-01-01,Previsão,Financiamento da Infraestrutura Turística,1922682647,2021-01-31
+2021-05-01,Pagamento,Aquisição de Vacinas,4889562612,2021-05-31
+2021-05-01,Pagamento,Auxílio Emergencial a Pessoas em Situação de Vulnerabilidade,9729754460,2021-05-31
+2021-05-01,Pagamento,Benefício Emergencial de Manutenção do Emprego e da Renda,631867896,2021-05-31
+2021-05-01,Pagamento,Despesas Adicionais do Ministério da Saúde e Demais Ministérios,5391678973,2021-05-31
+2021-05-01,Pagamento,Financiamento da Infraestrutura Turística,375000000,2021-05-31
+2021-05-01,Previsão,Aquisição de Vacinas,22289556963,2021-05-31
+2021-05-01,Previsão,Auxílio Emergencial a Pessoas em Situação de Vulnerabilidade,44863025231,2021-05-31
+2021-05-01,Previsão,Benefício Emergencial de Manutenção do Emprego e da Renda,11672815623,2021-05-31
+2021-05-01,Previsão,Despesas Adicionais do Ministério da Saúde e Demais Ministérios,14565821777,2021-05-31
+2021-05-01,Previsão,Financiamento da Infraestrutura Turística,1922682647,2021-05-31
+2021-03-01,Pagamento,Aquisição de Vacinas,3457670727,2021-03-31
+2021-03-01,Pagamento,Auxílio Emergencial a Pessoas em Situação de Vulnerabilidade,693737051,2021-03-31
+2021-03-01,Pagamento,Benefício Emergencial de Manutenção do Emprego e da Renda,423074514,2021-03-31
+2021-03-01,Pagamento,Despesas Adicionais do Ministério da Saúde e Demais Ministérios,3680896782,2021-03-31
+2021-03-01,Pagamento,Financiamento da Infraestrutura Turística,375000000,2021-03-31
+2021-03-01,Previsão,Aquisição de Vacinas,22289710098,2021-03-31
+2021-03-01,Previsão,Auxílio Emergencial a Pessoas em Situação de Vulnerabilidade,44863025231,2021-03-31
+2021-03-01,Previsão,Benefício Emergencial de Manutenção do Emprego e da Renda,4454094492,2021-03-31
+2021-03-01,Previsão,Despesas Adicionais do Ministério da Saúde e Demais Ministérios,11696497447,2021-03-31
+2021-03-01,Previsão,Financiamento da Infraestrutura Turística,1922682647,2021-03-31
+2020-04-01,Pagamento,Ampliação do Programa Bolsa Família,113145595,2020-04-30
+2020-04-01,Pagamento,Auxílio Emergencial a Pessoas em Situação de Vulnerabilidade,35780931600,2020-04-30
+2020-04-01,Pagamento,"Auxílio Financeiro aos Estados, Municípios e DF",1029968363,2020-04-30
+2020-04-01,Pagamento,Benefício Emergencial de Manutenção do Emprego e da Renda,325465302,2020-04-30
+2020-04-01,Pagamento,Concessão de Financiamento para Pagamento de Folha Salarial,17000000000,2020-04-30
+2020-04-01,Pagamento,Despesas Adicionais do Ministério da Saúde e Demais Ministérios,5794302108,2020-04-30
+2020-04-01,Pagamento,Transferência para a Conta de Desenvolvimento Energético,400000000,2020-04-30
+2020-04-01,Previsão,Ampliação do Programa Bolsa Família,3037598000,2020-04-30
+2020-04-01,Previsão,Auxílio Emergencial a Pessoas em Situação de Vulnerabilidade,123920000000,2020-04-30
+2020-04-01,Previsão,"Auxílio Financeiro aos Estados, Municípios e DF",16000000000,2020-04-30
+2020-04-01,Previsão,Benefício Emergencial de Manutenção do Emprego e da Renda,51641629500,2020-04-30
+2020-04-01,Previsão,Concessão de Financiamento para Pagamento de Folha Salarial,34000000000,2020-04-30
+2020-04-01,Previsão,Despesas Adicionais do Ministério da Saúde e Demais Ministérios,23534567380,2020-04-30
+2020-04-01,Previsão,Transferência para a Conta de Desenvolvimento Energético,900000000,2020-04-30
+2020-08-01,Pagamento,Ampliação do Programa Bolsa Família,369285445,2020-08-31
+2020-08-01,Pagamento,Auxílio Emergencial a Pessoas em Situação de Vulnerabilidade,212754035762,2020-08-31
+2020-08-01,Pagamento,"Auxílio Financeiro aos Estados, Municípios e DF",55173416873,2020-08-31
+2020-08-01,Pagamento,Benefício Emergencial de Manutenção do Emprego e da Renda,22329528137,2020-08-31
+2020-08-01,Pagamento,Concessão de Financiamento para Pagamento de Folha Salarial,17000000000,2020-08-31
+2020-08-01,Pagamento,Cotas dos Fundos Garantidores de Operações e de Crédito,25900000000,2020-08-31
+2020-08-01,Pagamento,Despesas Adicionais do Ministério da Saúde e Demais Ministérios,32060195108,2020-08-31
+2020-08-01,Pagamento,Financiamento da Infraestrutura Turística,418467676,2020-08-31
+2020-08-01,Pagamento,Transferência para a Conta de Desenvolvimento Energético,900000000,2020-08-31
+2020-08-01,Previsão,Ampliação do Programa Bolsa Família,3037598000,2020-08-31
+2020-08-01,Previsão,Aquisição de Vacinas,1994960005,2020-08-31
+2020-08-01,Previsão,Auxílio Emergencial a Pessoas em Situação de Vulnerabilidade,254399999999,2020-08-31
+2020-08-01,Previsão,"Auxílio Financeiro aos Estados, Municípios e DF",79189488452,2020-08-31
+2020-08-01,Previsão,Benefício Emergencial de Manutenção do Emprego e da Renda,51546521578,2020-08-31
+2020-08-01,Previsão,Concessão de Financiamento para Pagamento de Folha Salarial,17000000000,2020-08-31
+2020-08-01,Previsão,Cotas dos Fundos Garantidores de Operações e de Crédito,35900000000,2020-08-31
+2020-08-01,Previsão,Despesas Adicionais do Ministério da Saúde e Demais Ministérios,45835154677,2020-08-31
+2020-08-01,Previsão,Financiamento da Infraestrutura Turística,5000000000,2020-08-31
+2020-08-01,Previsão,Transferência para a Conta de Desenvolvimento Energético,900000000,2020-08-31
+2020-12-01,Pagamento,Ampliação do Programa Bolsa Família,369285445,2020-12-31
+2020-12-01,Pagamento,Aquisição de Vacinas,2218434631,2020-12-31
+2020-12-01,Pagamento,Auxílio Emergencial a Pessoas em Situação de Vulnerabilidade,293105434084,2020-12-31
+2020-12-01,Pagamento,"Auxílio Financeiro aos Estados, Municípios e DF",78247025919,2020-12-31
+2020-12-01,Pagamento,Benefício Emergencial de Manutenção do Emprego e da Renda,33497453157,2020-12-31
+2020-12-01,Pagamento,Concessão de Financiamento para Pagamento de Folha Salarial,6806766252,2020-12-31
+2020-12-01,Pagamento,Cotas dos Fundos Garantidores de Operações e de Crédito,58093233748,2020-12-31
+2020-12-01,Pagamento,Despesas Adicionais do Ministério da Saúde e Demais Ministérios,42703503356,2020-12-31
+2020-12-01,Pagamento,Financiamento da Infraestrutura Turística,3077317353,2020-12-31
+2020-12-01,Pagamento,Programa Emergencial de Acesso a Crédito - Maquininhas,5000000000,2020-12-31
+2020-12-01,Pagamento,Transferência para a Conta de Desenvolvimento Energético,900000000,2020-12-31
+2020-12-01,Previsão,Ampliação do Programa Bolsa Família,369285445,2020-12-31
+2020-12-01,Previsão,Aquisição de Vacinas,24508660004,2020-12-31
+2020-12-01,Previsão,Auxílio Emergencial a Pessoas em Situação de Vulnerabilidade,322000886208,2020-12-31
+2020-12-01,Previsão,"Auxílio Financeiro aos Estados, Municípios e DF",79189488452,2020-12-31
+2020-12-01,Previsão,Benefício Emergencial de Manutenção do Emprego e da Renda,51546521578,2020-12-31
+2020-12-01,Previsão,Concessão de Financiamento para Pagamento de Folha Salarial,6806766252,2020-12-31
+2020-12-01,Previsão,Cotas dos Fundos Garantidores de Operações e de Crédito,58093233748,2020-12-31
+2020-12-01,Previsão,Despesas Adicionais do Ministério da Saúde e Demais Ministérios,46330328477,2020-12-31
+2020-12-01,Previsão,Financiamento da Infraestrutura Turística,5000000000,2020-12-31
+2020-12-01,Previsão,Programa Emergencial de Acesso a Crédito - Maquininhas,10000000000,2020-12-31
+2020-12-01,Previsão,Transferência para a Conta de Desenvolvimento Energético,900000000,2020-12-31
+2020-02-01,Pagamento,Despesas Adicionais do Ministério da Saúde e Demais Ministérios,131711,2020-02-29
+2020-02-01,Previsão,Despesas Adicionais do Ministério da Saúde e Demais Ministérios,11287803,2020-02-29
+2020-07-01,Pagamento,Ampliação do Programa Bolsa Família,369285445,2020-07-31
+2020-07-01,Pagamento,Auxílio Emergencial a Pessoas em Situação de Vulnerabilidade,167415345729,2020-07-31
+2020-07-01,Pagamento,"Auxílio Financeiro aos Estados, Municípios e DF",39938768831,2020-07-31
+2020-07-01,Pagamento,Benefício Emergencial de Manutenção do Emprego e da Renda,18236132153,2020-07-31
+2020-07-01,Pagamento,Concessão de Financiamento para Pagamento de Folha Salarial,3910003151,2020-07-31
+2020-07-01,Pagamento,Cotas dos Fundos Garantidores de Operações e de Crédito,20900000000,2020-07-31
+2020-07-01,Pagamento,Despesas Adicionais do Ministério da Saúde e Demais Ministérios,21713767851,2020-07-31
+2020-07-01,Pagamento,Financiamento da Infraestrutura Turística,388467676,2020-07-31
+2020-07-01,Pagamento,Transferência para a Conta de Desenvolvimento Energético,900000000,2020-07-31
+2020-07-01,Previsão,Ampliação do Programa Bolsa Família,3037598000,2020-07-31
+2020-07-01,Previsão,Auxílio Emergencial a Pessoas em Situação de Vulnerabilidade,254399999999,2020-07-31
+2020-07-01,Previsão,"Auxílio Financeiro aos Estados, Municípios e DF",79189488452,2020-07-31
+2020-07-01,Previsão,Benefício Emergencial de Manutenção do Emprego e da Renda,51641629500,2020-07-31
+2020-07-01,Previsão,Concessão de Financiamento para Pagamento de Folha Salarial,34000000000,2020-07-31
+2020-07-01,Previsão,Cotas dos Fundos Garantidores de Operações e de Crédito,35900000000,2020-07-31
+2020-07-01,Previsão,Despesas Adicionais do Ministério da Saúde e Demais Ministérios,45900217148,2020-07-31
+2020-07-01,Previsão,Financiamento da Infraestrutura Turística,5000000000,2020-07-31
+2020-07-01,Previsão,Transferência para a Conta de Desenvolvimento Energético,900000000,2020-07-31
+2020-06-01,Pagamento,Ampliação do Programa Bolsa Família,369285445,2020-06-30
+2020-06-01,Pagamento,Auxílio Emergencial a Pessoas em Situação de Vulnerabilidade,121540186337,2020-06-30
+2020-06-01,Pagamento,"Auxílio Financeiro aos Estados, Municípios e DF",21643760804,2020-06-30
+2020-06-01,Pagamento,Benefício Emergencial de Manutenção do Emprego e da Renda,13944386111,2020-06-30
+2020-06-01,Pagamento,Concessão de Financiamento para Pagamento de Folha Salarial,17000000000,2020-06-30
+2020-06-01,Pagamento,Cotas dos Fundos Garantidores de Operações e de Crédito,20900000000,2020-06-30
+2020-06-01,Pagamento,Despesas Adicionais do Ministério da Saúde e Demais Ministérios,14325042219,2020-06-30
+2020-06-01,Pagamento,Financiamento da Infraestrutura Turística,379096019,2020-06-30
+2020-06-01,Pagamento,Transferência para a Conta de Desenvolvimento Energético,900000000,2020-06-30
+2020-06-01,Previsão,Ampliação do Programa Bolsa Família,3037598000,2020-06-30
+2020-06-01,Previsão,Auxílio Emergencial a Pessoas em Situação de Vulnerabilidade,152640000000,2020-06-30
+2020-06-01,Previsão,"Auxílio Financeiro aos Estados, Municípios e DF",76189488452,2020-06-30
+2020-06-01,Previsão,Benefício Emergencial de Manutenção do Emprego e da Renda,51641629500,2020-06-30
+2020-06-01,Previsão,Concessão de Financiamento para Pagamento de Folha Salarial,34000000000,2020-06-30
+2020-06-01,Previsão,Cotas dos Fundos Garantidores de Operações e de Crédito,35900000000,2020-06-30
+2020-06-01,Previsão,Despesas Adicionais do Ministério da Saúde e Demais Ministérios,45189275550,2020-06-30
+2020-06-01,Previsão,Financiamento da Infraestrutura Turística,5000000000,2020-06-30
+2020-06-01,Previsão,Transferência para a Conta de Desenvolvimento Energético,900000000,2020-06-30
+2020-05-01,Pagamento,Ampliação do Programa Bolsa Família,257113474,2020-05-31
+2020-05-01,Pagamento,Auxílio Emergencial a Pessoas em Situação de Vulnerabilidade,76858146000,2020-05-31
+2020-05-01,Pagamento,"Auxílio Financeiro aos Estados, Municípios e DF",1967418556,2020-05-31
+2020-05-01,Pagamento,Benefício Emergencial de Manutenção do Emprego e da Renda,6831265352,2020-05-31
+2020-05-01,Pagamento,Concessão de Financiamento para Pagamento de Folha Salarial,17000000000,2020-05-31
+2020-05-01,Pagamento,Despesas Adicionais do Ministério da Saúde e Demais Ministérios,10237824916,2020-05-31
+2020-05-01,Pagamento,Transferência para a Conta de Desenvolvimento Energético,650000000,2020-05-31
+2020-05-01,Previsão,Ampliação do Programa Bolsa Família,3037598000,2020-05-31
+2020-05-01,Previsão,Auxílio Emergencial a Pessoas em Situação de Vulnerabilidade,152640000000,2020-05-31
+2020-05-01,Previsão,"Auxílio Financeiro aos Estados, Municípios e DF",16000000000,2020-05-31
+2020-05-01,Previsão,Benefício Emergencial de Manutenção do Emprego e da Renda,51641629500,2020-05-31
+2020-05-01,Previsão,Concessão de Financiamento para Pagamento de Folha Salarial,34000000000,2020-05-31
+2020-05-01,Previsão,Cotas dos Fundos Garantidores de Operações e de Crédito,15900000000,2020-05-31
+2020-05-01,Previsão,Despesas Adicionais do Ministério da Saúde e Demais Ministérios,40326235779,2020-05-31
+2020-05-01,Previsão,Financiamento da Infraestrutura Turística,5000000000,2020-05-31
+2020-05-01,Previsão,Transferência para a Conta de Desenvolvimento Energético,900000000,2020-05-31
+2020-03-01,Pagamento,Despesas Adicionais do Ministério da Saúde e Demais Ministérios,1038410329,2020-03-31
+2020-03-01,Previsão,Ampliação do Programa Bolsa Família,3037598000,2020-03-31
+2020-03-01,Previsão,Despesas Adicionais do Ministério da Saúde e Demais Ministérios,5493083782,2020-03-31
+2020-11-01,Pagamento,Ampliação do Programa Bolsa Família,369285445,2020-11-30
+2020-11-01,Pagamento,Aquisição de Vacinas,2123024277,2020-11-30
+2020-11-01,Pagamento,Auxílio Emergencial a Pessoas em Situação de Vulnerabilidade,275775886664,2020-11-30
+2020-11-01,Pagamento,"Auxílio Financeiro aos Estados, Municípios e DF",78246605598,2020-11-30
+2020-11-01,Pagamento,Benefício Emergencial de Manutenção do Emprego e da Renda,31288092433,2020-11-30
+2020-11-01,Pagamento,Concessão de Financiamento para Pagamento de Folha Salarial,6806766252,2020-11-30
+2020-11-01,Pagamento,Cotas dos Fundos Garantidores de Operações e de Crédito,47900000000,2020-11-30
+2020-11-01,Pagamento,Despesas Adicionais do Ministério da Saúde e Demais Ministérios,38993293298,2020-11-30
+2020-11-01,Pagamento,Financiamento da Infraestrutura Turística,1423699428,2020-11-30
+2020-11-01,Pagamento,Programa Emergencial de Acesso a Crédito - Maquininhas,5000000000,2020-11-30
+2020-11-01,Pagamento,Transferência para a Conta de Desenvolvimento Energético,900000000,2020-11-30
+2020-11-01,Previsão,Ampliação do Programa Bolsa Família,369285445,2020-11-30
+2020-11-01,Previsão,Aquisição de Vacinas,4508660005,2020-11-30
+2020-11-01,Previsão,Auxílio Emergencial a Pessoas em Situação de Vulnerabilidade,322000886209,2020-11-30
+2020-11-01,Previsão,"Auxílio Financeiro aos Estados, Municípios e DF",79189488452,2020-11-30
+2020-11-01,Previsão,Benefício Emergencial de Manutenção do Emprego e da Renda,51546521578,2020-11-30
+2020-11-01,Previsão,Concessão de Financiamento para Pagamento de Folha Salarial,6806766252,2020-11-30
+2020-11-01,Previsão,Cotas dos Fundos Garantidores de Operações e de Crédito,47900000000,2020-11-30
+2020-11-01,Previsão,Despesas Adicionais do Ministério da Saúde e Demais Ministérios,46694796246,2020-11-30
+2020-11-01,Previsão,Financiamento da Infraestrutura Turística,5000000000,2020-11-30
+2020-11-01,Previsão,Programa Emergencial de Acesso a Crédito - Maquininhas,10000000000,2020-11-30
+2020-11-01,Previsão,Transferência para a Conta de Desenvolvimento Energético,900000000,2020-11-30
+2020-10-01,Pagamento,Ampliação do Programa Bolsa Família,369285445,2020-10-31
+2020-10-01,Pagamento,Aquisição de Vacinas,2114933212,2020-10-31
+2020-10-01,Pagamento,Auxílio Emergencial a Pessoas em Situação de Vulnerabilidade,257981161577,2020-10-31
+2020-10-01,Pagamento,"Auxílio Financeiro aos Estados, Municípios e DF",78123665036,2020-10-31
+2020-10-01,Pagamento,Benefício Emergencial de Manutenção do Emprego e da Renda,28750664718,2020-10-31
+2020-10-01,Pagamento,Concessão de Financiamento para Pagamento de Folha Salarial,10883767951,2020-10-31
+2020-10-01,Pagamento,Cotas dos Fundos Garantidores de Operações e de Crédito,47900000000,2020-10-31
+2020-10-01,Pagamento,Despesas Adicionais do Ministério da Saúde e Demais Ministérios,36892381758,2020-10-31
+2020-10-01,Pagamento,Financiamento da Infraestrutura Turística,770352928,2020-10-31
+2020-10-01,Pagamento,Programa Emergencial de Acesso a Crédito - Maquininhas,5000000000,2020-10-31
+2020-10-01,Pagamento,Transferência para a Conta de Desenvolvimento Energético,900000000,2020-10-31
+2020-10-01,Previsão,Ampliação do Programa Bolsa Família,3037598000,2020-10-31
+2020-10-01,Previsão,Aquisição de Vacinas,4508660005,2020-10-31
+2020-10-01,Previsão,Auxílio Emergencial a Pessoas em Situação de Vulnerabilidade,322000886209,2020-10-31
+2020-10-01,Previsão,"Auxílio Financeiro aos Estados, Municípios e DF",79189488452,2020-10-31
+2020-10-01,Previsão,Benefício Emergencial de Manutenção do Emprego e da Renda,51546521578,2020-10-31
+2020-10-01,Previsão,Concessão de Financiamento para Pagamento de Folha Salarial,17000000000,2020-10-31
+2020-10-01,Previsão,Cotas dos Fundos Garantidores de Operações e de Crédito,47900000000,2020-10-31
+2020-10-01,Previsão,Despesas Adicionais do Ministério da Saúde e Demais Ministérios,46610098851,2020-10-31
+2020-10-01,Previsão,Financiamento da Infraestrutura Turística,5000000000,2020-10-31
+2020-10-01,Previsão,Programa Emergencial de Acesso a Crédito - Maquininhas,10000000000,2020-10-31
+2020-10-01,Previsão,Transferência para a Conta de Desenvolvimento Energético,900000000,2020-10-31
+2020-09-01,Pagamento,Ampliação do Programa Bolsa Família,369285445,2020-09-30
+2020-09-01,Pagamento,Aquisição de Vacinas,1284037955,2020-09-30
+2020-09-01,Pagamento,Auxílio Emergencial a Pessoas em Situação de Vulnerabilidade,236936260270,2020-09-30
+2020-09-01,Pagamento,"Auxílio Financeiro aos Estados, Municípios e DF",74506950676,2020-09-30
+2020-09-01,Pagamento,Benefício Emergencial de Manutenção do Emprego e da Renda,25649594466,2020-09-30
+2020-09-01,Pagamento,Concessão de Financiamento para Pagamento de Folha Salarial,17000000000,2020-09-30
+2020-09-01,Pagamento,Cotas dos Fundos Garantidores de Operações e de Crédito,42900000000,2020-09-30
+2020-09-01,Pagamento,Despesas Adicionais do Ministério da Saúde e Demais Ministérios,35438726740,2020-09-30
+2020-09-01,Pagamento,Financiamento da Infraestrutura Turística,574467676,2020-09-30
+2020-09-01,Pagamento,Programa Emergencial de Acesso a Crédito - Maquininhas,5000000000,2020-09-30
+2020-09-01,Pagamento,Transferência para a Conta de Desenvolvimento Energético,900000000,2020-09-30
+2020-09-01,Previsão,Ampliação do Programa Bolsa Família,3037598000,2020-09-30
+2020-09-01,Previsão,Aquisição de Vacinas,4508660005,2020-09-30
+2020-09-01,Previsão,Auxílio Emergencial a Pessoas em Situação de Vulnerabilidade,322000886209,2020-09-30
+2020-09-01,Previsão,"Auxílio Financeiro aos Estados, Municípios e DF",79189488452,2020-09-30
+2020-09-01,Previsão,Benefício Emergencial de Manutenção do Emprego e da Renda,51546521578,2020-09-30
+2020-09-01,Previsão,Concessão de Financiamento para Pagamento de Folha Salarial,17000000000,2020-09-30
+2020-09-01,Previsão,Cotas dos Fundos Garantidores de Operações e de Crédito,47900000000,2020-09-30
+2020-09-01,Previsão,Despesas Adicionais do Ministério da Saúde e Demais Ministérios,45804025993,2020-09-30
+2020-09-01,Previsão,Financiamento da Infraestrutura Turística,5000000000,2020-09-30
+2020-09-01,Previsão,Programa Emergencial de Acesso a Crédito - Maquininhas,10000000000,2020-09-30
+2020-09-01,Previsão,Transferência para a Conta de Desenvolvimento Energético,900000000,2020-09-30
