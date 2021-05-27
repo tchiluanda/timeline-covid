@@ -66,3 +66,27 @@ ggplot(dvis_mensal3, aes(x = mes, y = gasto_item, fill = nome_do_gasto)) +
   geom_col() +
   scale_y_continuous(labels = function(x) format(x/1e9, big.mark = ".", decimal.mark = ",")) +
   coord_flip()
+
+
+
+#  timeline ---------------------------------------------------------------
+
+dados_raw <- read.csv('dados_timeline.csv')
+
+dados <- dados_raw %>%
+  mutate(mes_lancamento = ymd(mes_lancamento),
+         data = lubridate::as_date(data), 
+         encerramento = as_date(encerramento))
+
+skimr::skim(dados_raw)
+
+ggplot(dados, aes(x = mes_lancamento, y = gasto_item, fill = agrupamento,
+                  group = agrupamento)) + geom_col()
+
+dados %>% count(instrumento_inicial)
+
+ggplot(dados, aes(y = data, x = agrupamento)) + geom_point()
+ggplot(dados, aes(y = data, yend = encerramento, 
+                  x = instrumento_inicial, xend = instrumento_inicial,
+                  color = agrupamento)) + 
+  geom_segment()
