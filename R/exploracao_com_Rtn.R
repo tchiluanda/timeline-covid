@@ -72,4 +72,5 @@ gastos_plot <- ggplot(gastos,
 
 library(patchwork)
 
-gastos_plo/ metro + plot_layout(heights = c(4,1))
+gastos_plot / metro + plot_layout(heights = c(4,1))
+
