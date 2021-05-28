@@ -15,6 +15,17 @@ dados_instrumentos <- dados_raw %>%
          encerramento = as_date(encerramento)) %>%
   mutate(encerramento = replace_na(encerramento, lubridate::today()))
 
+dados_instrumentos_finais <- dados_raw %>%
+  filter(!is.na(instrumento_final)) %>%
+  group_by(agrupamento, instrumento_final) %>%
+  summarise_at(vars(data, encerramento), ~first(.)) %>%
+  ungroup() %>%
+  filter(!is.na(agrupamento)) %>%
+  mutate(data = as_date(data),
+         encerramento = as_date(encerramento)) %>%
+  mutate(encerramento = replace_na(encerramento, lubridate::today()))
+
+
 ggplot(dados_instrumentos, aes(x = agrupamento, xend = agrupamento, y = data, yend = encerramento)) + 
   geom_segment() +
   geom_point() +
@@ -74,3 +85,7 @@ library(patchwork)
 
 gastos_plot / metro + plot_layout(heights = c(4,1))
 
+g <- gastos_plot + coord_flip()
+m <- metro + coord_flip() + theme(legend.position = 'none')
+
+m + g + plot_layout(widths = c(1,4))
