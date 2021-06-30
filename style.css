@@ -1,0 +1,57 @@
+* {
+
+    box-sizing: border-box;
+
+}
+
+:root {}
+
+
+
+main {
+
+
+
+}
+
+div.abertura {
+
+    padding-top: 30vh;
+    height: 100vh;
+
+
+}
+
+.margenzona {
+
+    max-width: 32rem;
+    margin-left: max(10px, 0.7*100vw - 0.7*32rem);
+    margin-right: auto;
+
+}
+
+svg#background {
+
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    min-height: 100vh;
+    z-index: -1;
+
+}
+
+/*elementos ui*/
+
+.icone-continue {
+    margin-top: 2rem;
+    text-align: center;
+}
+
+.icone-continue svg {
+
+    height: 2rem;
+    width: 2rem;
+
+}
