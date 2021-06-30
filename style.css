@@ -42,6 +42,12 @@ svg#background {
 
 }
 
+section {
+
+    margin-top: 3rem;
+
+}
+
 /* para texto sobrepor linha no mobile */
 
 .margenzona h1, h2, .margenzona p {
