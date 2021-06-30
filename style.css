@@ -42,6 +42,16 @@ svg#background {
 
 }
 
+/* para texto sobrepor linha no mobile */
+
+.margenzona h1, h2, .margenzona p {
+    background-color: white;
+}
+
+.margenzona p.icone-continue {
+    background-color: transparent;
+}
+
 /*elementos ui*/
 
 .icone-continue {
