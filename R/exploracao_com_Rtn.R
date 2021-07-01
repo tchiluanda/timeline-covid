@@ -132,3 +132,9 @@ g <- gastos_plot + coord_flip()
 m <- metro + coord_flip() + theme(legend.position = 'none')
 
 m + g + plot_layout(widths = c(1,4))
+
+
+# export ------------------------------------------------------------------
+
+gastos_export <- gastos_copia %>% spread(agrupamento, gasto)
+write.csv(gastos_export, '../gastos.csv')
