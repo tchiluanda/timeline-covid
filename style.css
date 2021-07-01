@@ -6,7 +6,9 @@
 
 :root {}
 
-
+body {
+    margin: 0;
+}
 
 main {
 
@@ -39,6 +41,7 @@ svg#background {
     width: 100%;
     min-height: 100vh;
     z-index: -1;
+    border: 1px dotted rebeccapurple;
 
 }
 
