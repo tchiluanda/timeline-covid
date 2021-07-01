@@ -48,6 +48,33 @@ section {
 
 }
 
+/* vis */
+
+.main-vis {
+    width: 100vw;
+    display: flex;
+    justify-content: stretch;
+}
+
+.stream-wrapper {
+
+    flex: 1;
+
+}
+
+.metro-wrapper {
+
+    flex: 0 0 max(10px, 0.7*100vw - 0.7*32rem);
+    /* igual à margem esquerda acima de .margenzona acima*/
+
+}
+
+.main-vis svg {
+    width: 100%;
+    outline: 1px dashed cornflowerblue;
+}
+
+
 /* para texto sobrepor linha no mobile */
 
 .margenzona h1, h2, .margenzona p {
