@@ -136,5 +136,15 @@ m + g + plot_layout(widths = c(1,4))
 
 # export ------------------------------------------------------------------
 
-gastos_export <- gastos_copia %>% spread(agrupamento, gasto)
+gastos_export <- gastos_copia %>% 
+  spread(agrupamento, gasto, fill = 0)
+
 write.csv(gastos_export, '../gastos.csv')
+
+output <- list(
+  multiplos = instrumentos_multiplos,
+  pontos = dados_instrumentos,
+  extremos = sum_dados_instrumentos
+)
+
+jsonlite::write_json(output, '../metro.json')

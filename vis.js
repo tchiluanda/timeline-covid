@@ -6,19 +6,50 @@ const vis = {
 
         stacked : null,
 
+        metro : null,
+
         load : () => {
 
-            d3.csv("./gastos.csv", d => {
+            Promise.all([
 
-                d['date'] = d3.timeParse("%Y-%m-%d")(d.mes_lancamento);
-                d["data_br"] = d3.timeFormat("%B de %Y")(d.date);
+                d3.csv("./gastos.csv", d => {
 
-                return d
+                    d['date'] = d3.timeParse("%Y-%m-%d")(d.mes_lancamento);
+                    d["data_br"] = d3.timeFormat("%B de %Y")(d.date);
+    
+                    return d
+    
+                }),
 
-            })
+                fetch('./metro.json', {mode: 'cors'}).then( response => response.json())
+
+            ])
+
+
               .then(function(dados) {
 
-                vis.data.raw = dados;
+                vis.data.raw = dados[0];
+                vis.data.metro = dados[1];
+
+                vis.data.metro.multiplos.forEach(d => {
+
+                    d['date'] = d3.timeParse("%Y-%m-%d")(d.data);
+
+                });
+
+                vis.data.metro.pontos.forEach(d => {
+
+                    d['date'] = d3.timeParse("%Y-%m-%d")(d.data);
+
+                });
+
+                vis.data.metro.extremos.forEach(d => {
+
+                    d['date_inicial'] = d3.timeParse("%Y-%m-%d")(d.data_inicial);
+                    d['date_final'] = d3.timeParse("%Y-%m-%d")(d.data_final);
+
+                });
+
                 vis.ctrl.begin();
 
 
@@ -167,7 +198,9 @@ const vis = {
                 const sizes = vis.stream.sizes;
 
                 this.y = d3.scaleTime()
-                  .domain(d3.extent(data, d => d.date))
+                  .domain([
+                      vis.data.metro.extremos[0].date_inicial, //d3.extent(data, d => d.date))
+                      vis.data.metro.extremos[1].date_final])
                   .range([margin.top, sizes.height - margin.bottom]);
 
                 // x
@@ -229,9 +262,109 @@ const vis = {
             //  .call(xAxis);
 
 
+        },
+
+        axis : function(g) {
+
+            const margin = vis.stream.sizes.margins;
+            const width  = vis.stream.sizes.width;
+            const y      = vis.stream.scales.y;
+
+            g
+              //.attr("transform", `translate(0,${height - margin.bottom})`)
+              .call(d3.axisLeft(y));//.ticks(width / 80).tickSizeOuter(0))
+              //.call(g => g.select(".domain").remove());
         }
 
         
+
+    },
+
+    metro : {
+
+        refs : {
+
+            svg: 'svg.metro',
+
+            container : 'div.metro-wrapper'
+
+        },
+
+        sizes : {
+
+            width: null,
+
+            height: null,
+
+            margins : {
+
+                left: 0,
+                right: 50,
+                bottom: 0,
+                top: 0
+
+            },
+
+            get : function() {
+
+                const cont = document.querySelector(vis.metro.refs.container);
+
+                this.width = +window.getComputedStyle(cont).getPropertyValue("width").slice(0,-2);
+                this.height = vis.stream.sizes.height;
+
+            },
+
+            set : function() {
+
+                const svg = document.querySelector(vis.metro.refs.svg);
+
+                svg.style.height = this.height + 'px';
+
+            }
+
+        },
+
+        scales : {
+
+            x : null, 
+
+            y : null,
+
+            color : null,
+
+            set : function() {
+
+                // y e color -- iguais aos do stream
+
+                this.y     = vis.stream.scales.y;
+                this.color = vis.stream.scales.color;
+
+                // x
+
+                const data = vis.data.raw;
+                const series = vis.data.stacked;
+
+                const margin = vis.stream.sizes.margins;
+
+                const sizes = vis.stream.sizes;
+
+                this.x = d3.scaleLinear()
+                  .domain(
+                      [
+                          d3.min(series, d => d3.min(d, d => d[0])), 
+                          d3.max(series, d => d3.max(d, d => d[1]))
+                        ])
+                  .range([margin.left, sizes.width - margin.right]);
+
+                // color
+
+
+
+            }
+
+
+
+        }
 
     },
 
