@@ -101,3 +101,10 @@ section {
     width: 2rem;
 
 }
+
+/* vis */
+
+line.metro-lines {
+
+    stroke-width: 10px;
+}

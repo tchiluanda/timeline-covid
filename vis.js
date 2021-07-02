@@ -120,15 +120,12 @@ const vis = {
 
             d3.select("svg#background")
               .append('line')
-              .attr('x1', x)
-              .attr('x2', x)
+              .attr('x1', x - this.stroke/2)
+              .attr('x2', x - this.stroke/2)
               .attr('y1', 0)
               .attr('y2', vis.svg_background.height)
               .attr('stroke-width', this.stroke)
               .attr('stroke', 'hotpink');
-
-
-
 
         }
         
@@ -254,6 +251,7 @@ const vis = {
               .data(series)
               .join("path")
               .attr("fill", ({key}) => color(key))
+              .attr('data-agrupamento', ({key}) => key)
               .attr("d", area)
               .append("title")
               .text(({key}) => key);
@@ -296,14 +294,14 @@ const vis = {
 
             height: null,
 
-            margins : {
+            // margins : {
 
-                left: 0,
-                right: 50,
-                bottom: 0,
-                top: 0
+            //     left: 0,
+            //     right: 50,
+            //     bottom: 0,
+            //     top: 0
 
-            },
+            // },
 
             get : function() {
 
@@ -341,29 +339,56 @@ const vis = {
 
                 // x
 
-                const data = vis.data.raw;
-                const series = vis.data.stacked;
+                const dominio = vis.data.metro.extremos.map(d => d.agrupamento);
+
+
+
+                const largura_necessaria = dominio.length * 20;
+
+                const width = vis.metro.sizes.width;
+
+                const range = [
+
+                    (width - largura_necessaria) / 2,
+                    width - (width - largura_necessaria) / 2,
+
+                ];
 
                 const margin = vis.stream.sizes.margins;
 
-                const sizes = vis.stream.sizes;
-
-                this.x = d3.scaleLinear()
-                  .domain(
-                      [
-                          d3.min(series, d => d3.min(d, d => d[0])), 
-                          d3.max(series, d => d3.max(d, d => d[1]))
-                        ])
-                  .range([margin.left, sizes.width - margin.right]);
-
-                // color
-
-
+                this.x = d3.scaleBand()
+                  .domain(dominio)
+                  .range(range);
 
             }
 
+        },
 
+        draw : {
 
+            lines : function() {
+
+                const svg = d3.select(vis.metro.refs.svg);
+                const data = vis.data.metro.extremos;
+                const color = vis.metro.scales.color;
+                const x = vis.metro.scales.x;
+                const y = vis.metro.scales.y;
+    
+                svg
+                  .selectAll("line")
+                  .data(data)
+                  .join("line")
+                  .classed('metro-lines', true)
+                  .attr('data-agrupamento', d => d.agrupamento)
+                  .attr("stroke", d => color(d.agrupamento))
+                  .attr("x1", d => x(d.agrupamento))
+                  .attr("x2", d => x(d.agrupamento))
+                  .attr("y1", d => y(d.date_inicial))
+                  .attr("y2", d => y(d.date_final))
+                  .append("title")
+                  .text(({key}) => key);
+                
+            }
         }
 
     },
@@ -417,13 +442,14 @@ const vis = {
 
             vis.stream.sizes.get();
             vis.stream.sizes.set();
-
-
             vis.stream.scales.set();
-
             vis.stream.area.set();
-
             vis.stream.draw();
+
+            vis.metro.sizes.get();
+            vis.metro.sizes.set();
+            vis.metro.scales.set();
+            vis.metro.draw.lines();
 
 
         }
