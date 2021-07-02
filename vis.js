@@ -104,6 +104,8 @@ const vis = {
 
         stroke : 10,
 
+        x : null,
+
         get_left_space : function() {
 
             const el = document.querySelector('.margenzona');
@@ -115,13 +117,17 @@ const vis = {
         draw : function() {
 
             let x = this.left_space <= 100 ? vis.svg_background.width / 3 : this.left_space / 2 - this.stroke / 2;
+
+            x = x - this.stroke/2;
+
+            this.x = x; // pq vou precisar mais na frente.
             
             console.log(x);
 
             d3.select("svg#background")
               .append('line')
-              .attr('x1', x - this.stroke/2)
-              .attr('x2', x - this.stroke/2)
+              .attr('x1', x )
+              .attr('x2', x )
               .attr('y1', 0)
               .attr('y2', vis.svg_background.height)
               .attr('stroke-width', this.stroke)
@@ -152,8 +158,8 @@ const vis = {
 
                 left: 0,
                 right: 50,
-                bottom: 0,
-                top: 0
+                bottom: 20,
+                top: 100
 
             },
 
@@ -260,21 +266,7 @@ const vis = {
             //  .call(xAxis);
 
 
-        },
-
-        axis : function(g) {
-
-            const margin = vis.stream.sizes.margins;
-            const width  = vis.stream.sizes.width;
-            const y      = vis.stream.scales.y;
-
-            g
-              //.attr("transform", `translate(0,${height - margin.bottom})`)
-              .call(d3.axisLeft(y));//.ticks(width / 80).tickSizeOuter(0))
-              //.call(g => g.select(".domain").remove());
         }
-
-        
 
     },
 
@@ -294,14 +286,14 @@ const vis = {
 
             height: null,
 
-            // margins : {
+            margins : {
 
-            //     left: 0,
-            //     right: 50,
-            //     bottom: 0,
-            //     top: 0
+                left: 0,
+                right: 10,
+                bottom: 20,
+                top: 100
 
-            // },
+            },
 
             get : function() {
 
@@ -366,29 +358,112 @@ const vis = {
 
         draw : {
 
-            lines : function() {
+            // lines : function() {
+
+            //     const svg = d3.select(vis.metro.refs.svg);
+            //     const data = vis.data.metro.extremos;
+            //     const color = vis.metro.scales.color;
+            //     const x = vis.metro.scales.x;
+            //     const y = vis.metro.scales.y;
+    
+            //     svg
+            //       .selectAll("line")
+            //       .data(data)
+            //       .join("line")
+            //       .classed('metro-lines', true)
+            //       .attr('data-agrupamento', d => d.agrupamento)
+            //       .attr("stroke", d => color(d.agrupamento))
+            //       .attr("x1", d => x(d.agrupamento))
+            //       .attr("x2", d => x(d.agrupamento))
+            //       .attr("y1", d => y(d.date_inicial))
+            //       .attr("y2", d => y(d.date_final))
+            //       .append("title")
+            //       .text(({key}) => key);
+                
+            // },
+
+            connecting_lines : function() {
 
                 const svg = d3.select(vis.metro.refs.svg);
-                const data = vis.data.metro.extremos;
+                const extremos = vis.data.metro.extremos;
                 const color = vis.metro.scales.color;
                 const x = vis.metro.scales.x;
                 const y = vis.metro.scales.y;
-    
-                svg
-                  .selectAll("line")
-                  .data(data)
-                  .join("line")
-                  .classed('metro-lines', true)
-                  .attr('data-agrupamento', d => d.agrupamento)
-                  .attr("stroke", d => color(d.agrupamento))
-                  .attr("x1", d => x(d.agrupamento))
-                  .attr("x2", d => x(d.agrupamento))
-                  .attr("y1", d => y(d.date_inicial))
-                  .attr("y2", d => y(d.date_final))
-                  .append("title")
-                  .text(({key}) => key);
-                
+
+                const data = {};
+
+                extremos.forEach(linha => {
+
+                    data[linha.agrupamento] = [
+
+                        {
+                            y : 0,
+                            x : vis.line.x
+                        },
+
+                        {
+
+                            y : y(linha.date_inicial),
+                            x : x(linha.agrupamento)
+
+                        },
+
+                        {
+
+                            y : y(linha.date_final),
+                            x : x(linha.agrupamento)
+                        }
+
+                    ];
+
+                });
+
+                console.log(data);
+
+                const line_gen = d3.line()
+                  .x(d => d.x)
+                  .y(d => d.y)
+                  .curve(d3.curveBumpY);
+
+                extremos.forEach(serie => {
+
+                    const agrupamento = serie.agrupamento;
+
+                    svg
+                      .append('path')
+                      .datum(data[agrupamento])
+                      .attr('d', line_gen)
+                      .classed('metro-lines', true)
+                      .attr('data-agrupamento', d => d.agrupamento)
+                      .attr('stroke', color(agrupamento));
+
+                })
+
             }
+        },
+
+        axis : function() {
+
+            const margin = vis.metro.sizes.margins;
+            const width  = vis.metro.sizes.width;
+            const y      = vis.metro.scales.y;
+            const svg    = d3.select(vis.metro.refs.svg);
+
+
+            xAxis = function(g) {
+
+                g
+                  .call(d3.axisLeft(y))
+                  .attr("transform", `translate(${width - margin.right}, 0)`)
+
+            }
+              //.attr("transform", `translate(0,${height - margin.bottom})`)
+              //.ticks(width / 80).tickSizeOuter(0))
+              //.call(g => g.select(".domain").remove());
+
+            svg.append("g")
+              .classed('axis', true)
+              .call(xAxis);
         }
 
     },
@@ -449,7 +524,10 @@ const vis = {
             vis.metro.sizes.get();
             vis.metro.sizes.set();
             vis.metro.scales.set();
-            vis.metro.draw.lines();
+            //vis.metro.draw.lines();
+            vis.metro.axis();
+
+            vis.metro.draw.connecting_lines();
 
 
         }

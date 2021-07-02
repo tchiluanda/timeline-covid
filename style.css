@@ -104,7 +104,11 @@ section {
 
 /* vis */
 
-line.metro-lines {
+.metro-lines {
 
     stroke-width: 10px;
+    fill: transparent;
+    mix-blend-mode: multiply;
+
+
 }
