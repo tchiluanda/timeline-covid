@@ -123,7 +123,7 @@ const vis = {
             margins : {
 
                 left: 0,
-                right: 20,
+                right: 50,
                 bottom: 0,
                 top: 0
 
@@ -201,7 +201,8 @@ const vis = {
                 vis.stream.area.generator
                   .y(d => scales.y(d.data.date))
                   .x0(d => scales.x(d[0]))
-                  .x1(d => scales.x(d[1]));
+                  .x1(d => scales.x(d[1]))
+                  .curve(d3.curveCatmullRom);
 
             }
 
