@@ -29,6 +29,7 @@ div.abertura {
     max-width: 32rem;
     margin-left: max(10px, 0.7*100vw - 0.7*32rem);
     margin-right: auto;
+    padding-bottom: 10px; /* para evitar margin-collapse */
 
 }
 
@@ -41,7 +42,6 @@ svg#background {
     width: 100%;
     min-height: 100vh;
     z-index: -1;
-    border: 1px dotted rebeccapurple;
 
 }
 

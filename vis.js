@@ -106,11 +106,15 @@ const vis = {
 
         x : null,
 
+        y_final : null,
+
         get_left_space : function() {
 
             const el = document.querySelector('.margenzona');
 
             this.left_space = el.getBoundingClientRect().left;
+
+            this.y_final = el.getBoundingClientRect().height;
 
         },
 
@@ -129,7 +133,7 @@ const vis = {
               .attr('x1', x )
               .attr('x2', x )
               .attr('y1', 0)
-              .attr('y2', vis.svg_background.height)
+              .attr('y2', vis.line.y_final)//vis.svg_background.height)
               .attr('stroke-width', this.stroke)
               .attr('stroke', 'hotpink');
 
