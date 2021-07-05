@@ -386,7 +386,7 @@ const vis = {
                 
             // },
 
-            connecting_lines : function() {
+            lines : function() {
 
                 const svg = d3.select(vis.metro.refs.svg);
                 const extremos = vis.data.metro.extremos;
@@ -442,6 +442,27 @@ const vis = {
                       .attr('stroke', color(agrupamento));
 
                 })
+
+            },
+
+            pontos : function() {
+
+                const data = vis.data.metro.pontos;
+                const svg = d3.select(vis.metro.refs.svg);
+                const color = vis.metro.scales.color;
+                const x = vis.metro.scales.x;
+                const y = vis.metro.scales.y;
+
+                svg
+                  .selectAll('circle.metro-instrumentos')
+                  .data(data)
+                  .join('circle')
+                  .classed('metro-instrumentos', true)
+                  .attr('cx', d => x(d.agrupamento))
+                  .attr('cy', d => y(d.date))
+                  .attr('fill', 'black')
+                  .append('title')
+                    .text(d => d.instrumento_inicial);
 
             }
         },
@@ -531,7 +552,8 @@ const vis = {
             //vis.metro.draw.lines();
             vis.metro.axis();
 
-            vis.metro.draw.connecting_lines();
+            vis.metro.draw.lines();
+            vis.metro.draw.pontos();
 
 
         }

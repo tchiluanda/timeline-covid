@@ -4,7 +4,11 @@
 
 }
 
-:root {}
+:root {
+
+    --stroke-width: 10px;
+
+}
 
 body {
     margin: 0;
@@ -106,9 +110,15 @@ section {
 
 .metro-lines {
 
-    stroke-width: 10px;
+    stroke-width: var(--stroke-width);
     fill: transparent;
     mix-blend-mode: multiply;
 
+
+}
+
+.metro-instrumentos {
+
+    r: calc(var(--stroke-width) / 2);
 
 }
