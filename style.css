@@ -112,13 +112,18 @@ section {
 
     stroke-width: var(--stroke-width);
     fill: transparent;
-    mix-blend-mode: multiply;
-
+    /*mix-blend-mode: multiply;*/
 
 }
 
 .metro-instrumentos {
 
     r: calc(var(--stroke-width) / 2);
+
+}
+
+.metro-connecting-lines {
+
+    stroke: black;
 
 }

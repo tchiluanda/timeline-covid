@@ -464,6 +464,56 @@ const vis = {
                   .append('title')
                     .text(d => d.instrumento_inicial);
 
+            },
+
+            connecting_lines : function() {
+
+                const data = vis.data.metro.multiplos;
+                const svg = d3.select(vis.metro.refs.svg);
+                const color = vis.metro.scales.color;
+                const x = vis.metro.scales.x;
+                const y = vis.metro.scales.y;
+
+                // prepara
+
+                // valores únicos dos instrumentos
+                const instrumentos = data
+                  .map(d => d.instrumento_inicial)
+                  .filter((v, i, a) => a.indexOf(v) === i);
+
+                let pares = [];
+                
+                instrumentos.forEach(inst => {
+
+                    const ocorrencias = data.filter(d => d.instrumento_inicial == inst);
+
+                    let next = 0;
+
+                    while (next < ocorrencias.length - 1) {
+
+                        const par = [ocorrencias[next], ocorrencias[next+1]]
+
+                        pares.push(par);
+
+                        next++
+
+                    }
+
+                })
+
+                console.log(pares);
+
+                svg
+                  .selectAll('line.metro-connecting-lines')
+                  .data(pares)
+                  .join('line')
+                  .classed('metro-connecting-lines', true)
+                  .attr('y1', d => y(d[0].date))
+                  .attr('y2', d => y(d[1].date))
+                  .attr('x1', d => x(d[0].agrupamento))
+                  .attr('x2', d => x(d[1].agrupamento));
+
+
             }
         },
 
@@ -552,6 +602,8 @@ const vis = {
             //vis.metro.draw.lines();
             vis.metro.axis();
 
+            // ordem importante para definir o que sobrepõe o quê
+            vis.metro.draw.connecting_lines();
             vis.metro.draw.lines();
             vis.metro.draw.pontos();
 
