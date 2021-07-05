@@ -81,6 +81,31 @@ section {
     outline: 1px dashed cornflowerblue;
 }
 
+/* grid */
+
+.wrapper-boxes div { outline: 1px solid hotpink;}
+
+.wrapper-boxes {
+
+    margin-left: -10rem;
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template: 
+     "repasse repasse repasse repasse renuncias regras"
+     "prot-social suporte-trabalho medidas-sanitarias outras-medidas medidas-federativas .";
+}
+
+[data-super-grupo="repasse"] { grid-area: repasse; }
+[data-super-grupo="renuncias"] { grid-area: renuncias; }
+[data-super-grupo="regras"] { grid-area: regras; }
+div[data-agrupamento="Proteção Social"] { grid-area: prot-social; }
+div[data-agrupamento="Suporte ao Trabalho"] { grid-area: suporte-trabalho; }
+div[data-agrupamento="Medidas Sanitárias"] { grid-area: medidas-sanitarias; }
+div[data-agrupamento="Outras medidas"] { grid-area: outras-medidas; }
+div[data-agrupamento="Medidas Federativas"] { grid-area: medidas-federativas; }
+
+
 
 /* para texto sobrepor linha no mobile */
 
