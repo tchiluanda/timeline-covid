@@ -183,6 +183,7 @@ div[data-agrupamento="Medidas Federativas"] { grid-area: medidas-federativas; }
     left: 0;
     right: 0;
     text-align: center;
+    background-color: white;
 
 }
 
