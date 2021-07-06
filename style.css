@@ -168,6 +168,15 @@ div[data-agrupamento="Medidas Federativas"] { grid-area: medidas-federativas; }
 
 }
 
+select#tipo-valor {
+
+    font-size: inherit;
+    font-family: inherit;
+    border: none;
+    border-bottom: 1px dashed #212121;
+
+}
+
 /* vis */
 
 .metro-wrapper, .stream-wrapper {

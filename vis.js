@@ -575,6 +575,35 @@ const vis = {
 
     },
 
+    interacoes : {
+
+        seletor_tipo_despesa : {
+
+            ref: '#tipo-valor',
+
+            monitora : function() {
+
+                const el = document.querySelector(this.ref);
+
+                el.addEventListener('change', e => {
+
+                    const opcao = e.target.value;
+
+                    console.log(opcao);
+
+                    // atualiza o streamgraph
+                    vis.stream.change(opcao);
+
+                })
+
+
+            }
+
+        }
+
+
+    },
+
     utils :  {
 
         localeBrasil : {
@@ -639,6 +668,8 @@ const vis = {
             vis.metro.draw.connecting_lines();
             vis.metro.draw.lines();
             vis.metro.draw.pontos();
+
+            vis.interacoes.seletor_tipo_despesa.monitora();
 
 
         }
