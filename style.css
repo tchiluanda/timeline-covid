@@ -8,6 +8,8 @@
 
     --stroke-width: 10px;
 
+    font-family: 'Lora';
+
 }
 
 body {
@@ -83,13 +85,21 @@ section {
 
 /* grid */
 
-.wrapper-boxes div { outline: 1px solid hotpink;}
+.wrapper-boxes div { 
+
+    outline: 1px solid hotpink;
+
+    font-family: 'Lato';
+    font-size: .8rem;
+
+}
 
 .wrapper-boxes {
 
     margin-left: -10rem;
     display: grid;
-    grid-template-rows: 1fr 1fr;
+    gap: 5px;
+    grid-template-rows: auto;
     grid-template-columns: repeat(6, 1fr);
     grid-template: 
      "repasse repasse repasse repasse renuncias regras"
@@ -104,6 +114,33 @@ div[data-agrupamento="Suporte ao Trabalho"] { grid-area: suporte-trabalho; }
 div[data-agrupamento="Medidas Sanitárias"] { grid-area: medidas-sanitarias; }
 div[data-agrupamento="Outras medidas"] { grid-area: outras-medidas; }
 div[data-agrupamento="Medidas Federativas"] { grid-area: medidas-federativas; }
+
+/* grid styling */
+
+.box {
+    
+    padding: 10px;
+
+}
+
+.box h3 {
+
+    min-height: 20%;
+
+}
+
+.box p {
+
+    margin: 0;
+
+}
+
+.box-segundo-nivel {
+
+    padding: 10px;
+    text-align: center;
+
+}
 
 
 
@@ -132,6 +169,22 @@ div[data-agrupamento="Medidas Federativas"] { grid-area: medidas-federativas; }
 }
 
 /* vis */
+
+.metro-wrapper, .stream-wrapper {
+
+    position: relative;
+
+}
+
+.metro-wrapper h3, .stream-wrapper h3 {
+
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    text-align: center;
+
+}
 
 .metro-lines {
 

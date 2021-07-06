@@ -133,7 +133,7 @@ const vis = {
               .attr('x1', x )
               .attr('x2', x )
               .attr('y1', 0)
-              .attr('y2', vis.line.y_final)//vis.svg_background.height)
+              .attr('y2', vis.line.y_final + vis.metro.sizes.margins.top/2)//vis.svg_background.height)
               .attr('stroke-width', this.stroke)
               .attr('stroke', 'hotpink');
 
@@ -156,14 +156,14 @@ const vis = {
 
             width: null,
 
-            height: 1000,
+            height: 1500,
 
             margins : {
 
                 left: 0,
                 right: 50,
                 bottom: 20,
-                top: 100
+                top: 160
 
             },
 
@@ -295,7 +295,7 @@ const vis = {
                 left: 0,
                 right: 10,
                 bottom: 20,
-                top: 100
+                top: 160
 
             },
 
@@ -391,6 +391,7 @@ const vis = {
                 const svg = d3.select(vis.metro.refs.svg);
                 const extremos = vis.data.metro.extremos;
                 const color = vis.metro.scales.color;
+                const margin = vis.metro.sizes.margins;
                 const x = vis.metro.scales.x;
                 const y = vis.metro.scales.y;
 
@@ -401,7 +402,7 @@ const vis = {
                     data[linha.agrupamento] = [
 
                         {
-                            y : 0,
+                            y : margin.top/2,
                             x : vis.line.x
                         },
 
