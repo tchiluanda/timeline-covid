@@ -4,7 +4,11 @@ const vis = {
 
         raw : null,
 
+        mensal : null,
+
         stacked : null,
+
+        stacked_mensal : null,
 
         metro : null,
 
@@ -21,6 +25,15 @@ const vis = {
     
                 }),
 
+                d3.csv("./gastos_mensais.csv", d => {
+
+                    d['date'] = d3.timeParse("%Y-%m-%d")(d.mes_lancamento);
+                    d["data_br"] = d3.timeFormat("%B de %Y")(d.date);
+    
+                    return d
+    
+                }),
+
                 fetch('./metro.json', {mode: 'cors'}).then( response => response.json())
 
             ])
@@ -29,7 +42,8 @@ const vis = {
               .then(function(dados) {
 
                 vis.data.raw = dados[0];
-                vis.data.metro = dados[1];
+                vis.data.mensal = dados[1]
+                vis.data.metro = dados[2];
 
                 vis.data.metro.multiplos.forEach(d => {
 
@@ -61,8 +75,8 @@ const vis = {
 
             const stacked = d3.stack()
              .keys(data.columns.slice(2))
-             .offset(d3.stackOffsetWiggle)
-             .order(d3.stackOrderInsideOut)(data)
+             .offset(d3.stackOffsetSilhouette) //OffsetWiggle
+             .order(d3.stackOrderNone)(data)  //.order(d3.stackOrderInsideOut)(data)
 
             return stacked;
 
@@ -260,6 +274,7 @@ const vis = {
               .selectAll("path")
               .data(series)
               .join("path")
+              .classed('streamgraph', true)
               .attr("fill", ({key}) => color(key))
               .attr('data-agrupamento', ({key}) => key)
               .attr("d", area)
@@ -269,6 +284,22 @@ const vis = {
             //svg.append("g")
             //  .call(xAxis);
 
+
+        },
+
+        change : function(option) {
+
+            const data = option == 'acumulado' ? 
+                         vis.data.stacked :
+                         vis.data.stacked_mensal;
+
+            const area = vis.stream.area.generator;
+
+            d3.selectAll('path.streamgraph')
+              .data(data)
+              .transition()
+              .duration(1000)
+              .attr('d', area);
 
         }
 
@@ -590,6 +621,7 @@ const vis = {
         begin : function() {
 
             vis.data.stacked  = vis.data.make_stack(vis.data.raw);
+            vis.data.stacked_mensal  = vis.data.make_stack(vis.data.mensal);
 
             vis.stream.sizes.get();
             vis.stream.sizes.set();
