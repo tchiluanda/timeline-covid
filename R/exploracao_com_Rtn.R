@@ -7,7 +7,7 @@ library(RColorBrewer)
 
 loadfonts()
 
-dados_raw <- read.csv('dados_timeline_rtn.csv')
+dados_raw <- read.csv('dados_timeline_rtn2.csv')
 
 dados_instrumentos <- dados_raw %>%
   group_by(agrupamento, instrumento_inicial) %>%
@@ -88,28 +88,32 @@ gastos <- dados_raw %>%
 gastos_finais_2020 <- gastos %>% filter(mes_lancamento == '2020-12-01') %>% as.data.frame()
 # se não transformar os dois em data frame, dá erro :/
 
-gastos_copia <- gastos
+gastos_filled <- gastos %>% 
+  spread(agrupamento, value = gasto, fill = 0) %>% 
+  gather(-mes_lancamento, key = agrupamento, value = gasto)
 
-for (linha in 1:nrow(gastos)) {
+gastos_copia <- gastos_filled
+
+for (linha in 1:nrow(gastos_filled)) {
   
   data_corte <- as_date('2021-01-01')
   
-  if (gastos[linha, 'mes_lancamento'] >= data_corte) {
+  if (gastos_filled[linha, 'mes_lancamento'] >= data_corte) {
     
     print(paste(
-      gastos[linha, 'mes_lancamento'],
-      gastos[linha, 'agrupamento'],
-      which(gastos_finais_2020$agrupamento == gastos[linha, 'agrupamento']),
+      gastos_filled[linha, 'mes_lancamento'],
+      gastos_filled[linha, 'agrupamento'],
+      which(gastos_finais_2020$agrupamento == gastos_filled[linha, 'agrupamento']),
       linha,
-      gastos[linha, 'gasto'],
+      gastos_filled[linha, 'gasto'],
       gastos_copia[linha, 'gasto'],
       sep = '|'
     ))
     
-    agrupamento <- gastos[linha, 'agrupamento']
+    agrupamento <- gastos_filled[linha, 'agrupamento']
     linha_agrupamento <- which(gastos_finais_2020$agrupamento == agrupamento)
     
-    gastos_copia[linha, 'gasto'] <- gastos[linha, 'gasto'] + 
+    gastos_copia[linha, 'gasto'] <- gastos_filled[linha, 'gasto'] + 
       gastos_finais_2020[linha_agrupamento, 'gasto']
     
   }
@@ -134,12 +138,51 @@ m <- metro + coord_flip() + theme(legend.position = 'none')
 m + g + plot_layout(widths = c(1,4))
 
 
+# gastos mensais ----------------------------------------------------------
+
+gastos_mensais <- gastos_copia %>%
+  group_by(agrupamento) %>%
+  mutate(gasto = ifelse(
+    row_number()>1,
+    gasto - lag(gasto),
+    gasto)) %>%
+
+# cirurgia
+
+posicoes_neg <- which(gastos_mensais$gasto < 0)
+
+for (posicao in posicoes_neg) {
+  
+  valor_neg <- gastos_mensais[posicoes_neg,"gasto"]
+  gastos_mensais[posicoes_neg, "gasto"] <- 0
+  gastos_mensais[posicoes_neg-1, "gasto"] <- gastos_mensais[posicoes_neg-1, "gasto"] + valor_neg
+  
+}
+
+ggplot(gastos_mensais, 
+       aes(x = mes_lancamento, y = gasto, fill = agrupamento)) + 
+  geom_col() +
+  scale_x_date(
+    date_labels = "%b %Y",
+    limits = c(sum_dados_instrumentos$data_inicial[1], sum_dados_instrumentos$data_final[1])) +
+  scale_fill_manual(values = cores) +
+  labs(x = NULL)
+
 # export ------------------------------------------------------------------
+
+
 
 gastos_export <- gastos_copia %>% 
   spread(agrupamento, gasto, fill = 0)
 
 write.csv(gastos_export, '../gastos.csv')
+
+gastos_mensais_export <- gastos_mensais %>% 
+  spread(agrupamento, gasto, fill = 0)
+
+write.csv(gastos_mensais, '../gastos.csv')
+
+sum_dados_instrumentos$data_final <- max(gastos_copia$mes_lancamento)
 
 output <- list(
   multiplos = instrumentos_multiplos,
