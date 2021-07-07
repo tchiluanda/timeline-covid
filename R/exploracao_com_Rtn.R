@@ -180,7 +180,7 @@ write.csv(gastos_export, '../gastos.csv')
 gastos_mensais_export <- gastos_mensais %>% 
   spread(agrupamento, gasto, fill = 0)
 
-write.csv(gastos_mensais, '../gastos.csv')
+write.csv(gastos_mensais_export, '../gastos_mensais.csv')
 
 sum_dados_instrumentos$data_final <- max(gastos_copia$mes_lancamento)
 
