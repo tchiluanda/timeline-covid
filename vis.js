@@ -144,12 +144,18 @@ const vis = {
 
             d3.select("svg#background")
               .append('line')
+              .classed('waiting', true)
               .attr('x1', x )
               .attr('x2', x )
               .attr('y1', 0)
               .attr('y2', vis.line.y_final + vis.metro.sizes.margins.top/2)//vis.svg_background.height)
-              .attr('stroke-width', this.stroke)
-              .attr('stroke', 'hotpink');
+              .attr('stroke-width', this.stroke);
+
+        },
+
+        expand : function() {
+
+            d3.select("svg#background line").classed('waiting', false);
 
         }
         
@@ -275,7 +281,7 @@ const vis = {
               .data(series)
               .join("path")
               .classed('streamgraph', true)
-              .attr("fill", ({key}) => color(key))
+              //.attr("fill", ({key}) => color(key))
               .attr('data-agrupamento', ({key}) => key)
               .attr("d", area)
               .append("title")
@@ -470,8 +476,8 @@ const vis = {
                       .datum(data[agrupamento])
                       .attr('d', line_gen)
                       .classed('metro-lines', true)
-                      .attr('data-agrupamento', d => d.agrupamento)
-                      .attr('stroke', color(agrupamento));
+                      .attr('data-agrupamento', agrupamento);
+                      //.attr('stroke', color(agrupamento));
 
                 })
 
@@ -492,7 +498,7 @@ const vis = {
                   .classed('metro-instrumentos', true)
                   .attr('cx', d => x(d.agrupamento))
                   .attr('cy', d => y(d.date))
-                  .attr('fill', 'black')
+                  //.attr('fill', 'black')
                   .append('title')
                     .text(d => d.instrumento_inicial);
 
@@ -651,6 +657,9 @@ const vis = {
 
             vis.data.stacked  = vis.data.make_stack(vis.data.raw);
             vis.data.stacked_mensal  = vis.data.make_stack(vis.data.mensal);
+
+            // expand background line
+            vis.line.expand();
 
             vis.stream.sizes.get();
             vis.stream.sizes.set();
