@@ -12,6 +12,8 @@ const vis = {
 
         metro : null,
 
+        totais : {},
+
         load : () => {
 
             Promise.all([
@@ -79,6 +81,22 @@ const vis = {
              .order(d3.stackOrderNone)(data)  //.order(d3.stackOrderInsideOut)(data)
 
             return stacked;
+
+        },
+
+        calcula_totais : () => {
+
+            const data = vis.data.raw.slice(-1)[0];
+
+            console.log(data);
+
+            vis.data.totais["repasses"] =  
+              (+data['Medidas Sanitárias'] / 1)
+              + (+data['Proteção Social'] / 1)
+              + (+data['Suporte ao Trabalho'] / 1)
+              + (+data['sem grupo'] / 1);
+
+            vis.data.totais["renuncias"] = + data['Medidas Federativas'];
 
         }
 
@@ -637,6 +655,31 @@ const vis = {
 
     },
 
+    texto : {
+
+        ref : '[data-super-grupo]',
+
+        popula_totais : function() {
+
+            const els = document.querySelectorAll(this.ref);
+
+            els.forEach(el => {
+
+                const tipo = el.dataset.superGrupo;
+
+                const valor = (vis.data.totais[tipo]/1e9).toFixed(0);
+
+                el.innerHTML = valor;
+
+            })
+
+
+
+        }
+
+
+    },
+
 
 
     ctrl : {
@@ -654,6 +697,10 @@ const vis = {
 
         // after data is loaded
         begin : function() {
+
+
+            vis.data.calcula_totais(); // para popular o texto
+            vis.texto.popula_totais();
 
             vis.data.stacked  = vis.data.make_stack(vis.data.raw);
             vis.data.stacked_mensal  = vis.data.make_stack(vis.data.mensal);

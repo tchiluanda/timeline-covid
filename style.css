@@ -28,14 +28,15 @@
 
 }
 
+
+/* layout */
+
 body {
     margin: 0;
 }
 
-main {
-
-
-
+p {
+    line-height: 1.4;
 }
 
 div.abertura {
@@ -52,6 +53,12 @@ div.abertura {
     margin-left: max(10px, 0.7*100vw - 0.7*32rem);
     margin-right: auto;
     padding-bottom: 10px; /* para evitar margin-collapse */
+
+}
+
+section {
+
+    margin-top: 3rem;
 
 }
 
@@ -78,39 +85,6 @@ svg#background line {
 .waiting {
 
     transform: scaleY(0);
-
-}
-
-section {
-
-    margin-top: 3rem;
-
-}
-
-/* vis */
-
-.main-vis {
-    width: 100vw;
-    display: flex;
-    justify-content: stretch;
-}
-
-.stream-wrapper {
-
-    flex: 1;
-
-}
-
-.metro-wrapper {
-
-    flex: 0 0 max(10px, 0.7*100vw - 0.7*32rem);
-    /* igual à margem esquerda acima de .margenzona acima*/
-
-}
-
-.main-vis svg {
-
-    width: 100%;
 
 }
 
@@ -184,10 +158,10 @@ div[data-agrupamento="Medidas Federativas"] { grid-area: medidas-federativas; }
 /* seção resumo */
 
 .wrapper-super-grupo {
-    border: 3px dotted var(--text);
+    border: 2px dotted var(--text);
     margin-bottom: 1rem;
     padding: .5rem;
-    background-color: var(--line);
+    background-color: var(--background);
 }
 
 .wrapper-super-grupo h3 {
@@ -200,6 +174,22 @@ div[data-agrupamento="Medidas Federativas"] { grid-area: medidas-federativas; }
 
     margin-bottom: 0;
     background-color: transparent;
+}
+
+.super-grupo {
+
+    text-transform: uppercase;
+
+}
+
+span[data-agrupamento] {
+
+    padding: .1em .2em;
+    border-radius: .3em;
+    color: var(--background2);
+    font-family: Lato;
+    font-weight: 300;
+
 }
 
 
@@ -228,7 +218,32 @@ select#tipo-valor {
 
 }
 
-/* vis */
+/* vis - layout */
+
+.main-vis {
+    width: 100vw;
+    display: flex;
+    justify-content: stretch;
+}
+
+.stream-wrapper {
+
+    flex: 1;
+
+}
+
+.metro-wrapper {
+
+    flex: 0 0 max(10px, 0.7*100vw - 0.7*32rem);
+    /* igual à margem esquerda acima de .margenzona acima*/
+
+}
+
+.main-vis svg {
+
+    width: 100%;
+
+}
 
 .metro-wrapper, .stream-wrapper {
 
@@ -246,6 +261,8 @@ select#tipo-valor {
     background-color: var(--background2);
 
 }
+
+/* vis - elements */
 
 .metro-lines {
 
@@ -268,6 +285,19 @@ select#tipo-valor {
 
 }
 
+g.axis {
+
+    stroke: var(--text);
+
+}
+
+g.axis text {
+
+    font-family: Lato;
+    font-weight: 200;
+
+}
+
 path.streamgraph[data-agrupamento="Proteção Social"] { fill: var(--protecao); }
 path.metro-lines[data-agrupamento="Proteção Social"] { stroke: var(--protecao); }
 span[data-agrupamento="Proteção Social"] { background-color: var(--protecao); }
@@ -283,5 +313,7 @@ span[data-agrupamento="Medidas Sanitárias"] { background-color: var(--sanitaria
 path.streamgraph[data-agrupamento="Medidas Federativas"] { fill: var(--federativas); }
 path.metro-lines[data-agrupamento="Medidas Federativas"] { stroke: var(--federativas); }
 span[data-agrupamento="Medidas Federativas"] { background-color: var(--federativas); }
+
+path.streamgraph[data-agrupamento="sem grupo"] { fill: var(--line); }
 
 
