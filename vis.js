@@ -20,6 +20,9 @@ const vis = {
 
                 d3.csv("./gastos.csv", d => {
 
+                    const locale = vis.utils.localeDataBrasil;
+                    d3.timeFormatDefaultLocale(locale);
+
                     d['date'] = d3.timeParse("%Y-%m-%d")(d.mes_lancamento);
                     d["data_br"] = d3.timeFormat("%B de %Y")(d.date);
     
@@ -578,13 +581,14 @@ const vis = {
             const margin = vis.metro.sizes.margins;
             const width  = vis.metro.sizes.width;
             const y      = vis.metro.scales.y;
+            const formataData = d3.timeFormat("%b/%Y");
             const svg    = d3.select(vis.metro.refs.svg);
 
 
-            xAxis = function(g) {
+            yAxis = function(g) {
 
                 g
-                  .call(d3.axisLeft(y))
+                  .call(d3.axisLeft(y).tickFormat(d => formataData(d)))
                   .attr("transform", `translate(${width - margin.right}, 0)`)
 
             }
@@ -594,7 +598,7 @@ const vis = {
 
             svg.append("g")
               .classed('axis', true)
-              .call(xAxis);
+              .call(yAxis);
         }
 
     },
@@ -650,7 +654,7 @@ const vis = {
             "shortDays": ["Dom", "Seg", "Ter", "Qua", "Qui", "Sex", "Sáb"],
             "months": ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"],
             "shortMonths": ["Jan", "Fev", "Mar", "Abr", "Mai", "Jun", "Jul", "Ago", "Set", "Out", "Nov", "Dez"]
-        
+
         }
 
     },
