@@ -521,7 +521,7 @@ const vis = {
                   .attr('cy', d => y(d.date))
                   //.attr('fill', 'black')
                   .append('title')
-                    .text(d => d.instrumento_inicial);
+                    .text(d => d.instrumento);
 
             },
 

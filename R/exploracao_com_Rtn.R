@@ -3,11 +3,14 @@ library(extrafont)
 library(lubridate)
 library(patchwork)
 library(RColorBrewer)
+library(readxl)
 
 
 loadfonts()
 
 dados_raw <- read.csv('dados_timeline_rtn2.csv')
+
+dados_detalhados_instrumentos <- read_excel('dados_instrumentos.xlsx')
 
 dados_instrumentos <- dados_raw %>%
   group_by(agrupamento, instrumento_inicial) %>%
@@ -145,7 +148,7 @@ gastos_mensais <- gastos_copia %>%
   mutate(gasto = ifelse(
     row_number()>1,
     gasto - lag(gasto),
-    gasto)) %>%
+    gasto))
 
 # cirurgia
 
@@ -186,7 +189,7 @@ sum_dados_instrumentos$data_final <- max(gastos_copia$mes_lancamento)
 
 output <- list(
   multiplos = instrumentos_multiplos,
-  pontos = dados_instrumentos,
+  pontos = dados_detalhados_instrumentos,
   extremos = sum_dados_instrumentos
 )
 
