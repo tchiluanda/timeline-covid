@@ -279,6 +279,14 @@ select#tipo-valor {
 
 }
 
+circle.metro-tem-anotacao {
+
+    r: calc(var(--stroke-width) / 2);
+    fill: transparent;
+    stroke: var(--background2);
+
+}
+
 .metro-connecting-lines {
 
     stroke: var(--text);
@@ -315,5 +323,14 @@ path.metro-lines[data-agrupamento="Medidas Federativas"] { stroke: var(--federat
 span[data-agrupamento="Medidas Federativas"] { background-color: var(--federativas); }
 
 path.streamgraph[data-agrupamento="sem grupo"] { fill: var(--line); }
+
+/* anotaçoes */
+
+p.annotations {
+
+    margin: 0;
+    position: absolute;
+
+}
 
 

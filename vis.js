@@ -69,6 +69,8 @@ const vis = {
 
                 });
 
+                vis.data.metro['anotacoes'] = vis.data.metro.pontos.filter(d => d.anotacao_fixa);
+
                 vis.ctrl.begin();
 
 
@@ -603,6 +605,56 @@ const vis = {
 
     },
 
+    anotacoes : {
+
+        ref : '.metro-wrapper',
+
+        sizes : {
+
+            metro_esquerdo : null,
+            metro_direito : null,
+            w_max : null,
+
+            calcula : function() {
+
+                [this.metro_esquerdo, this.metro_direito] = vis.metro.scales.x.range();
+
+                this.w_max = Math.min(this.metro_esquerdo, 300);
+        
+            }
+
+        },
+
+        marca_instrumentos : function() {
+
+            const data = vis.data.metro.anotacoes;
+            const svg = d3.select(vis.metro.refs.svg);
+            const color = vis.metro.scales.color;
+            const x = vis.metro.scales.x;
+            const y = vis.metro.scales.y;
+
+            svg
+              .selectAll('circle.metro-tem-anotacao')
+              .data(data)
+              .join('circle')
+              .classed('metro-tem-anotacao', true)
+              .attr('cx', d => x(d.agrupamento))
+              .attr('cy', d => y(d.date));
+
+        },
+
+
+        inclui : function() {
+
+            const cont = document.querySelector(this.ref);
+
+
+
+
+        }
+
+    },
+
     interacoes : {
 
         seletor_tipo_despesa : {
@@ -728,6 +780,7 @@ const vis = {
             vis.metro.draw.connecting_lines();
             vis.metro.draw.lines();
             vis.metro.draw.pontos();
+            vis.anotacoes.marca_instrumentos();
 
             vis.interacoes.seletor_tipo_despesa.monitora();
 
