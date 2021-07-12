@@ -295,4 +295,95 @@ path.streamgraph[data-agrupamento="sem grupo"] { fill: var(--line); }
 
 }
 
+button#toggle-modo {
 
+    display: none;
+
+}
+
+/* mobile */
+
+@media (max-width: 1070px) {
+
+    svg#background {
+
+        display: none;
+
+    }
+
+    .margenzona {
+
+        margin-left: auto;
+
+    }
+
+    .metro-wrapper {
+
+        flex: 0 0 50vw;
+
+    }
+
+
+
+}
+
+@media (max-width: 800px) {
+
+    .main-vis {
+
+        display: block;
+        width: 100vw;
+        padding: 0 10px;
+        height: 2000px;
+
+    }
+
+    .main-vis > div {
+
+        position: absolute;
+        width: 100%;
+        transition: transform .5s;
+
+    }
+
+    .stream-wrapper {
+
+        padding: 0 10px;
+        transform: translateX(100vw);
+
+    }
+
+    .main-vis.modo-stream .metro-wrapper {
+
+        transform: translateX(-100vw);
+
+    }
+
+    .main-vis.modo-stream .stream-wrapper {
+
+        transform: translateX(0);
+
+    }
+
+    button#toggle-modo {
+
+        display: block;
+        text-align: right;
+        position: sticky;
+        right: 10px;
+        top: 10px;
+        margin-left: auto;
+        z-index: 3;
+        transition: all .5s;
+        
+    }
+
+    .main-vis.modo-stream button#toggle-modo {
+
+        left: 10px;
+        margin-left: 0;
+        transition: all .5s;
+
+    }
+
+}

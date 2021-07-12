@@ -719,6 +719,25 @@ const vis = {
 
             }
 
+        },
+
+        botao_modo : {
+
+            ref: '#toggle-modo',
+
+            monitor : function() {
+
+                const btn = document.querySelector(this.ref);
+                const cont = document.querySelector('.main-vis');
+
+                btn.addEventListener('click', function(e) {
+
+                    cont.classList.toggle('modo-stream');
+                    console.log('mudei');
+
+                })
+
+            }
         }
 
 
@@ -828,6 +847,8 @@ const vis = {
             vis.anotacoes.inclui();
 
             vis.interacoes.seletor_tipo_despesa.monitora();
+
+            vis.interacoes.botao_modo.monitor();
 
 
         }
