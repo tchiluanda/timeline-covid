@@ -203,7 +203,7 @@ const vis = {
 
             margins : {
 
-                left: 0,
+                left: 50,
                 right: 50,
                 bottom: 20,
                 top: 160
@@ -290,6 +290,31 @@ const vis = {
 
             }
 
+        },
+
+        axis : function() {
+
+            const margin = vis.stream.sizes.margins;
+            const width  = vis.stream.sizes.width;
+            const y      = vis.stream.scales.y;
+            const formataData = d3.timeFormat("%b/%Y");
+            const svg    = d3.select(vis.stream.refs.svg);
+
+
+            yAxis = function(g) {
+
+                g
+                  .call(d3.axisRight(y).tickFormat(d => formataData(d)))
+                  //.attr("transform", `translate(${width - margin.right}, 0)`)
+
+            }
+              //.attr("transform", `translate(0,${height - margin.bottom})`)
+              //.ticks(width / 80).tickSizeOuter(0))
+              //.call(g => g.select(".domain").remove());
+
+            svg.append("g")
+              .classed('axis', true)
+              .call(yAxis);
         },
 
 
@@ -579,31 +604,6 @@ const vis = {
             }
         },
 
-        axis : function() {
-
-            const margin = vis.metro.sizes.margins;
-            const width  = vis.metro.sizes.width;
-            const y      = vis.metro.scales.y;
-            const formataData = d3.timeFormat("%b/%Y");
-            const svg    = d3.select(vis.metro.refs.svg);
-
-
-            yAxis = function(g) {
-
-                g
-                  .call(d3.axisLeft(y).tickFormat(d => formataData(d)))
-                  .attr("transform", `translate(${width - margin.right}, 0)`)
-
-            }
-              //.attr("transform", `translate(0,${height - margin.bottom})`)
-              //.ticks(width / 80).tickSizeOuter(0))
-              //.call(g => g.select(".domain").remove());
-
-            svg.append("g")
-              .classed('axis', true)
-              .call(yAxis);
-        }
-
     },
 
     anotacoes : {
@@ -809,12 +809,13 @@ const vis = {
             vis.stream.scales.set();
             vis.stream.area.set();
             vis.stream.draw();
+            vis.stream.axis();
 
             vis.metro.sizes.get();
             vis.metro.sizes.set();
             vis.metro.scales.set();
             //vis.metro.draw.lines();
-            vis.metro.axis();
+
 
             // ordem importante para definir o que sobrepõe o quê
             vis.metro.draw.connecting_lines();
