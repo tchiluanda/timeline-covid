@@ -199,7 +199,7 @@ const vis = {
 
             width: null,
 
-            height: 1500,
+            height: 2000,
 
             margins : {
 
@@ -248,9 +248,10 @@ const vis = {
                 const sizes = vis.stream.sizes;
 
                 this.y = d3.scaleTime()
-                  .domain([
-                      vis.data.metro.extremos[0].date_inicial, //d3.extent(data, d => d.date))
-                      vis.data.metro.extremos[1].date_final])
+                  .domain(
+                    d3.extent(data, d => d.date))
+                      //[vis.data.metro.extremos[0].date_inicial,
+                      //vis.data.metro.extremos[1].date_final])
                   .range([margin.top, sizes.height - margin.bottom]);
 
                 // x
