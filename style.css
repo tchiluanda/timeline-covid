@@ -7,6 +7,7 @@
 :root {
 
     --stroke-width: 10px;
+    --r : calc(var(--stroke-width) / 2);
 
     /* Color */
     --sanitarias  : #BF2C62;
@@ -17,6 +18,7 @@
     --federativas : #1E5693;
     
     --line: #DEBFC0;
+    --darker: #AB9394;
 
     --text: #363131;
 
@@ -274,22 +276,24 @@ select#tipo-valor {
 
 .metro-instrumentos {
 
-    r: calc(var(--stroke-width) / 2);
+    r: var(--r);
     fill: var(--text);
 
 }
 
 circle.metro-tem-anotacao {
 
-    r: calc(var(--stroke-width) / 2);
+    r: var(--r);
     fill: transparent;
     stroke: var(--background2);
+    pointer-events: none;
 
 }
 
 .metro-connecting-lines {
 
     stroke: var(--text);
+    stroke-width: 3px;;
 
 }
 
@@ -326,10 +330,35 @@ path.streamgraph[data-agrupamento="sem grupo"] { fill: var(--line); }
 
 /* anotaçoes */
 
-p.annotations {
+.metro-anotacoes-fixas {
+
+    position: absolute;
+    font-size: .6rem;
+    font-family: Lato;
+    padding: 0 .5em;
+    transform: translateY( calc( -1 * var(--r) ) );
+
+}
+
+.metro-anotacoes-fixas * {
 
     margin: 0;
-    position: absolute;
+
+}
+
+/* isso aqui é para esconder o pedaço da linha */
+
+.metro-anotacoes-fixas h4 {
+
+    display: inline-block;
+    padding-right: .5em;
+    background-color: var(--background2);
+
+}
+
+.metro-linha-anotacao {
+
+    stroke: var(--darker);
 
 }
 

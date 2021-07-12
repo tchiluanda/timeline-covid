@@ -610,6 +610,8 @@ const vis = {
 
         ref : '.metro-wrapper',
 
+        lado_direito: ['MP nº 935/2020'],
+
         sizes : {
 
             metro_esquerdo : null,
@@ -647,8 +649,45 @@ const vis = {
 
         inclui : function() {
 
-            const cont = document.querySelector(this.ref);
+            const cont = d3.select(this.ref);
+            const data = vis.data.metro.anotacoes;
+            const x = vis.metro.scales.x;
+            const y = vis.metro.scales.y;
+            const sizes = vis.anotacoes.sizes;
+            const lado_direito = this.lado_direito;
 
+            const divs = cont
+              .selectAll('div.metro-anotacoes-fixas')
+              .data(data)
+              .join('div')
+              .classed('metro-anotacoes-fixas', true)
+              .style('top', d => y(d.date) + 'px')
+              .style('left', d => (lado_direito.includes(d.instrumento) ? sizes.metro_direito : 0) + 'px')
+              .style('width', sizes.w_max + 'px');
+
+            divs.append('h4').html(d => d3.timeFormat("%d/%m/%Y")(d.date) + ' &mdash; ' + d.instrumento);
+            divs.append('p').text(d => d.anotacao_fixa);
+
+        },
+
+        linha_anotacao : function() {
+
+            const data = vis.data.metro.anotacoes;
+            const svg = d3.select(vis.metro.refs.svg);
+            const x = vis.metro.scales.x;
+            const y = vis.metro.scales.y;
+            const lado_direito = this.lado_direito;
+            const sizes = vis.anotacoes.sizes;
+
+            svg
+              .selectAll('line.metro-linha-anotacao')
+              .data(data)
+              .join('line')
+              .classed('metro-linha-anotacao', true)
+              .attr('x1', d => x(d.agrupamento))
+              .attr('x2', d => lado_direito.includes(d.instrumento) ? sizes.metro_direito : 10)
+              .attr('y1', d => y(d.date))
+              .attr('y2', d => y(d.date));
 
 
 
@@ -781,7 +820,11 @@ const vis = {
             vis.metro.draw.connecting_lines();
             vis.metro.draw.lines();
             vis.metro.draw.pontos();
+
+            vis.anotacoes.sizes.calcula();
+            vis.anotacoes.linha_anotacao();
             vis.anotacoes.marca_instrumentos();
+            vis.anotacoes.inclui();
 
             vis.interacoes.seletor_tipo_despesa.monitora();
 
