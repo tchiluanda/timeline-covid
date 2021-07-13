@@ -301,6 +301,29 @@ button#toggle-modo {
 
 }
 
+/* tooltip */
+
+.tooltip-instrumento {
+
+    position: absolute;
+    z-index: 4;
+    border: 2px solid hotpink;
+    width: 250px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: .8rem;
+    background-color: var(--background);
+    padding: 10px;
+    box-shadow: 0 0 5px var(--line);
+
+}
+
+.tooltip-instrumento * {
+
+    margin: 0;
+
+}
+
 /* mobile */
 
 @media (max-width: 1070px) {
@@ -332,7 +355,7 @@ button#toggle-modo {
     h1 {
 
         font-size: 1.6rem;
-        
+
     }
 
 
