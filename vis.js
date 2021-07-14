@@ -725,7 +725,7 @@ const vis = {
 
             ref: '#toggle-modo',
 
-            monitor : function() {
+            monitora : function() {
 
                 const btn = document.querySelector(this.ref);
                 const cont = document.querySelector('.main-vis');
@@ -744,7 +744,7 @@ const vis = {
 
             ref: '.tooltip-instrumento',
 
-            populate : function(e) {
+            popula_e_mostra : function(e) {
 
                 console.log(e, e.target);
 
@@ -778,24 +778,19 @@ const vis = {
                 const pos_y = y(e.target.__data__.date) - 20;
 
                 tt.style.transform = `translate(-50%, calc(${pos_y}px - 100%))`;
+
                 tt.classList.add('tooltip-visivel');
 
                 e.target.classList.add('metro-instrumentos-destaque');
 
             },
 
-            monitora_fechar : function() {
+            esconde : function(e) {
 
-                const bkg = document.querySelector('.main-vis');
+                const tt = document.querySelector(vis.interacoes.tooltips.ref);
+                tt.classList.remove('tooltip-visivel');
 
-                bkg.addEventListener('click', function(e) {
-
-                    console.log('outside', e.target);
-
-
-                })
-
-
+                e.target.classList.remove('metro-instrumentos-destaque');
 
             },
 
@@ -803,7 +798,10 @@ const vis = {
 
                 const pontos = d3.selectAll('circle.metro-instrumentos');
 
-                pontos.on('click', vis.interacoes.tooltips.populate);
+                pontos
+                  .on('mouseover', vis.interacoes.tooltips.popula_e_mostra)
+                  .on('mouseout',  vis.interacoes.tooltips.esconde);
+
             }
 
         }
@@ -915,9 +913,9 @@ const vis = {
             vis.anotacoes.inclui();
 
             vis.interacoes.seletor_tipo_despesa.monitora();
-            vis.interacoes.botao_modo.monitor();
+            vis.interacoes.botao_modo.monitora();
             vis.interacoes.tooltips.monitora();
-            vis.interacoes.tooltips.monitora_fechar();
+
 
 
         }
