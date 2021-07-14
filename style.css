@@ -203,6 +203,7 @@ select#tipo-valor {
 
     stroke-width: var(--stroke-width);
     fill: transparent;
+    pointer-events: none;
     /*mix-blend-mode: multiply;*/
 
 }

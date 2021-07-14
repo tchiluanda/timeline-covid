@@ -781,16 +781,72 @@ const vis = {
 
                 tt.classList.add('tooltip-visivel');
 
+                // primeiro checa se já existe um ponto clicado, aí remove a classe ante
+                const ponto_selecionado = document.querySelector('.metro-instrumentos-destaque');
+                if (ponto_selecionado) ponto_selecionado.classList.remove('metro-instrumentos-destaque');
+
                 e.target.classList.add('metro-instrumentos-destaque');
+
+                // monitora cliques fora para fechar o tooltip
+                vis.interacoes.tooltips.monitora_fechar('on');
+
+            },
+
+            monitora_fechar : function(chave) {
+
+                const bkg = document.querySelector('.main-vis')
+
+                if (chave == 'on') {
+
+                    console.log('turning on');
+
+                    bkg.addEventListener('click',  vis.interacoes.tooltips.esconde);
+
+                } else {
+
+                    console.log('turning off');
+
+                    bkg.removeEventListener('click',  vis.interacoes.tooltips.esconde);
+
+                }
 
             },
 
             esconde : function(e) {
 
-                const tt = document.querySelector(vis.interacoes.tooltips.ref);
-                tt.classList.remove('tooltip-visivel');
+                const tg = e.target;
+                const parent = tg.parentNode;
+                const grandparent = parent.parentNode;
 
-                e.target.classList.remove('metro-instrumentos-destaque');
+                //console.log('clique background', e.target, e.target.parentNode, e.target.parentNode.parentNode);
+                //console.log(tg.classList.contains('metro-instrumentos'));
+
+                if (
+
+                    tg.classList.contains('.tooltip-instrumento') ||
+                    parent.classList.contains('.tooltip-instrumento') ||
+                    grandparent.classList.contains('.tooltip-instrumento') ||
+                    tg.classList.contains('metro-instrumentos')
+
+                    ) {
+                        console.log('clique no tooltip, ou em outro ponto -- mantém tooltip');
+
+                    } else {
+
+                        console.log('clique fora do tooltip ou do ponto, fechar');
+
+                        const tt = document.querySelector(vis.interacoes.tooltips.ref);
+                        tt.classList.remove('tooltip-visivel');
+
+                        const ponto_selecionado = document.querySelector('.metro-instrumentos-destaque');
+                        if (ponto_selecionado) ponto_selecionado.classList.remove('metro-instrumentos-destaque');
+
+                        // remove monitor de cliques fora do tooltip
+                        vis.interacoes.tooltips.monitora_fechar('off');
+                        
+
+
+                    }
 
             },
 
@@ -798,9 +854,7 @@ const vis = {
 
                 const pontos = d3.selectAll('circle.metro-instrumentos');
 
-                pontos
-                  .on('mouseover', vis.interacoes.tooltips.popula_e_mostra)
-                  .on('mouseout',  vis.interacoes.tooltips.esconde);
+                pontos.on('click', vis.interacoes.tooltips.popula_e_mostra);
 
             }
 
