@@ -295,6 +295,61 @@ span[data-agrupamento="Medidas Federativas"] { background-color: var(--federativ
 
 path.streamgraph[data-agrupamento="sem grupo"] { fill: var(--line); }
 
+/* vis legenda */
+
+.legenda {
+
+    position: absolute;
+    bottom: 0;
+    height: 60px;
+    left: 0;
+    width: 100%;
+
+}
+
+.legenda [data-legenda] {
+
+    --base-height: 20px;
+
+    margin: 0 auto;
+    border: 1px solid var(--text);
+    border-top: none;
+}
+
+[data-legenda="maior"] {
+
+    height: calc(var(--base-height) * 3);
+    width: 80%;
+
+}
+
+[data-legenda="meio"] {
+
+    height: calc(var(--base-height) * 2);
+    width: 60%;
+
+}
+
+[data-legenda="menor"] {
+
+    height: var(--base-height);
+    width: 40%;
+
+
+}
+
+[data-legenda]::after {
+
+    content: attr(data-valor);
+    display: inline-block;
+    text-align: center;
+    width: 100%;
+    font-size: 10px;
+    font-family: Lato;
+    font-weight: 400;
+
+}
+
 /* anotaçoes */
 
 .metro-anotacoes-fixas {

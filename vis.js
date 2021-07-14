@@ -205,7 +205,7 @@ const vis = {
 
                 left: 50,
                 right: 50,
-                bottom: 20,
+                bottom: 60,
                 top: 160
 
             },
@@ -356,6 +356,32 @@ const vis = {
               .duration(1000)
               .attr('d', area);
 
+        },
+
+        faz_legenda : function() {
+
+            const dominio = vis.stream.scales.x.domain()[1] - vis.stream.scales.x.domain()[0];
+            const range = vis.stream.scales.x.range()[1] - vis.stream.scales.x.range()[0];
+
+            function scale_w(valor) {
+
+                return valor * range / dominio;
+
+            }
+
+            console.log(dominio, range, scale_w(100e9));
+
+            const divs = document.querySelectorAll('[data-legenda]');
+
+            const breakpoints = [500, 300, 100];
+
+            breakpoints.forEach( (valor, i) => {
+
+                divs[i].dataset.valor = `R$ ${valor}bi`;
+                divs[i].style.width = scale_w(valor * 1e9) + 'px';
+
+            })
+
         }
 
     },
@@ -380,7 +406,7 @@ const vis = {
 
                 left: 0,
                 right: 10,
-                bottom: 20,
+                bottom: 60,
                 top: 160
 
             },
@@ -546,10 +572,10 @@ const vis = {
                   .join('circle')
                   .classed('metro-instrumentos', true)
                   .attr('cx', d => x(d.agrupamento))
-                  .attr('cy', d => y(d.date))
+                  .attr('cy', d => y(d.date));
                   //.attr('fill', 'black')
-                  .append('title')
-                    .text(d => d.instrumento);
+                  //.append('title')
+                  //  .text(d => d.instrumento);
 
             },
 
@@ -961,6 +987,7 @@ const vis = {
             vis.stream.area.set();
             vis.stream.draw();
             vis.stream.axis();
+            vis.stream.faz_legenda();
 
             vis.metro.sizes.get();
             vis.metro.sizes.set();
