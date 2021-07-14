@@ -794,19 +794,21 @@ const vis = {
 
             monitora_fechar : function(chave) {
 
-                const bkg = document.querySelector('.main-vis')
+                const bkg = document.querySelector('.fechar-tooltip')
 
                 if (chave == 'on') {
 
                     console.log('turning on');
 
                     bkg.addEventListener('click',  vis.interacoes.tooltips.esconde);
+                    bkg.classList.add('monitorando-cliques');
 
                 } else {
 
                     console.log('turning off');
 
                     bkg.removeEventListener('click',  vis.interacoes.tooltips.esconde);
+                    bkg.classList.remove('monitorando-cliques');
 
                 }
 
@@ -814,39 +816,49 @@ const vis = {
 
             esconde : function(e) {
 
-                const tg = e.target;
-                const parent = tg.parentNode;
-                const grandparent = parent.parentNode;
+                const tt = document.querySelector(vis.interacoes.tooltips.ref);
+                tt.classList.remove('tooltip-visivel');
 
-                //console.log('clique background', e.target, e.target.parentNode, e.target.parentNode.parentNode);
-                //console.log(tg.classList.contains('metro-instrumentos'));
+                const ponto_selecionado = document.querySelector('.metro-instrumentos-destaque');
+                if (ponto_selecionado) ponto_selecionado.classList.remove('metro-instrumentos-destaque');
 
-                if (
+                // remove monitor de cliques fora do tooltip
+                vis.interacoes.tooltips.monitora_fechar('off');
+                
 
-                    tg.classList.contains('.tooltip-instrumento') ||
-                    parent.classList.contains('.tooltip-instrumento') ||
-                    grandparent.classList.contains('.tooltip-instrumento') ||
-                    tg.classList.contains('metro-instrumentos')
+                // const tg = e.target;
+                // const parent = tg.parentNode;
+                // const grandparent = parent.parentNode;
 
-                    ) {
-                        console.log('clique no tooltip, ou em outro ponto -- mantém tooltip');
+                // //console.log('clique background', e.target, e.target.parentNode, e.target.parentNode.parentNode);
+                // //console.log(tg.classList.contains('metro-instrumentos'));
 
-                    } else {
+                // if (
 
-                        console.log('clique fora do tooltip ou do ponto, fechar');
+                //     tg.classList.contains('.tooltip-instrumento') ||
+                //     parent.classList.contains('.tooltip-instrumento') ||
+                //     grandparent.classList.contains('.tooltip-instrumento') ||
+                //     tg.classList.contains('metro-instrumentos')
 
-                        const tt = document.querySelector(vis.interacoes.tooltips.ref);
-                        tt.classList.remove('tooltip-visivel');
+                //     ) {
+                //         console.log('clique no tooltip, ou em outro ponto -- mantém tooltip');
 
-                        const ponto_selecionado = document.querySelector('.metro-instrumentos-destaque');
-                        if (ponto_selecionado) ponto_selecionado.classList.remove('metro-instrumentos-destaque');
+                //     } else {
 
-                        // remove monitor de cliques fora do tooltip
-                        vis.interacoes.tooltips.monitora_fechar('off');
+                //         console.log('clique fora do tooltip ou do ponto, fechar');
+
+                //         const tt = document.querySelector(vis.interacoes.tooltips.ref);
+                //         tt.classList.remove('tooltip-visivel');
+
+                //         const ponto_selecionado = document.querySelector('.metro-instrumentos-destaque');
+                //         if (ponto_selecionado) ponto_selecionado.classList.remove('metro-instrumentos-destaque');
+
+                //         // remove monitor de cliques fora do tooltip
+                //         vis.interacoes.tooltips.monitora_fechar('off');
                         
 
 
-                    }
+                //     }
 
             },
 

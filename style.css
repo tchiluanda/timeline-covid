@@ -156,9 +156,11 @@ select#tipo-valor {
 /* vis - layout */
 
 .main-vis {
+
     width: 100vw;
     display: flex;
     justify-content: stretch;
+    position: relative;
 }
 
 .stream-wrapper {
@@ -348,6 +350,24 @@ button#toggle-modo {
 .tooltip-instrumento.tooltip-visivel {
 
     opacity : 1;
+    pointer-events: initial;
+
+}
+
+.fechar-tooltip {
+
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 3;
+    pointer-events: none;
+
+}
+
+.fechar-tooltip.monitorando-cliques {
+
     pointer-events: initial;
 
 }
