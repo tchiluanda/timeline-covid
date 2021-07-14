@@ -30,6 +30,20 @@
 
 }
 
+/* header */
+
+header.logo {
+    width: 100%;
+    background-color: var(--darker);
+    padding: 10px;
+    box-shadow: 0 0 5px 1px var(--darker);
+}
+
+header.logo img {
+    margin: 0 auto;
+    max-width: 200px;
+    display: block;
+}
 
 /* layout */
 
@@ -69,7 +83,7 @@ section {
 svg#background {
 
     position: absolute;
-    top: 0;
+    top: 57px; /* é o tamanho do header */
     left: 0;
     right: 0;
     width: 100%;
