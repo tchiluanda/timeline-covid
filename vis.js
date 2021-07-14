@@ -738,6 +738,74 @@ const vis = {
                 })
 
             }
+        },
+
+        tooltips : {
+
+            ref: '.tooltip-instrumento',
+
+            populate : function(e) {
+
+                console.log(e, e.target);
+
+                const tt = document.querySelector(vis.interacoes.tooltips.ref);
+                const data = vis.data.metro.pontos;
+                const y = vis.metro.scales.y;
+                const sizes = vis.anotacoes.sizes;
+
+                const campos = ['date', 'anotacao', 'ementa', 'instrumento', 'link'];
+
+                campos.forEach(campo => {
+
+                    const el = tt.querySelector('[data-proposicao-' + campo);
+
+                    if (campo == 'link') {
+
+                        el.href = e.target.__data__[campo];
+
+                    } else {
+
+                        let raw_data = e.target.__data__[campo];
+
+                        if (campo == 'date') raw_data = d3.timeFormat("de %d de %B de %Y")(raw_data);
+
+                        el.innerHTML = raw_data;
+
+                    }
+
+                })
+
+                const pos_y = y(e.target.__data__.date) - 20;
+
+                tt.style.transform = `translate(-50%, calc(${pos_y}px - 100%))`;
+                tt.classList.add('tooltip-visivel');
+
+                e.target.classList.add('metro-instrumentos-destaque');
+
+            },
+
+            monitora_fechar : function() {
+
+                const bkg = document.querySelector('.main-vis');
+
+                bkg.addEventListener('click', function(e) {
+
+                    console.log('outside', e.target);
+
+
+                })
+
+
+
+            },
+
+            monitora : function() {
+
+                const pontos = d3.selectAll('circle.metro-instrumentos');
+
+                pontos.on('click', vis.interacoes.tooltips.populate);
+            }
+
         }
 
 
@@ -847,8 +915,9 @@ const vis = {
             vis.anotacoes.inclui();
 
             vis.interacoes.seletor_tipo_despesa.monitora();
-
             vis.interacoes.botao_modo.monitor();
+            vis.interacoes.tooltips.monitora();
+            vis.interacoes.tooltips.monitora_fechar();
 
 
         }
