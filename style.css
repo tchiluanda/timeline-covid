@@ -218,6 +218,12 @@ select#tipo-valor {
 
 }
 
+.metro-instrumentos:hover {
+
+    r: 8px;
+
+}
+
 .metro-instrumentos-destaque {
 
     fill: var(--background);;
