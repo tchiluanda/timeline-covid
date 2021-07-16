@@ -246,7 +246,8 @@ select#tipo-valor {
 
     r: var(--r);
     fill: var(--text);
-    transition: all .5s;
+    transition: all .25s;
+    cursor: pointer;
 
 }
 
