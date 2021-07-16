@@ -45,6 +45,20 @@ header.logo img {
     display: block;
 }
 
+/* listas */
+
+li::marker {
+
+    color: var(--darker);
+
+}
+
+li {
+
+    margin-bottom: .5rem;
+
+}
+
 /* layout */
 
 body {
