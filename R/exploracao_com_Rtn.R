@@ -8,7 +8,7 @@ library(readxl)
 
 loadfonts()
 
-dados_raw <- read.csv('dados_timeline_rtn.csv')
+dados_raw <- read.csv('dados_timeline_.csv')
 
 dados_detalhados_instrumentos <- read_excel('dados_instrumentos.xlsx')
 
@@ -81,11 +81,11 @@ gastos <- dados_raw %>%
   filter(fase_da_despesa == "Pagamento") %>%   #, !is.na(agrupamento)) %>%
   mutate(mes_lancamento = as_date(mes_lancamento),
          agrupamento = replace_na(agrupamento, 'sem grupo')) %>%
-  group_by(agrupamento, mes_lancamento, nome_do_gasto, instrumento_inicial) %>%
-  summarise(gasto = first(gasto_item)) %>%
-  ungroup() %>%
+  #group_by(agrupamento, mes_lancamento, nome_do_gasto, instrumento_inicial) %>%
+  #summarise(gasto = first(gasto_item)) %>%
+  #ungroup() %>%
   group_by(agrupamento, mes_lancamento) %>%
-  summarise(gasto = sum(gasto)) %>%
+  summarise(gasto = sum(gasto_item)) %>%
   as.data.frame()
 
 gastos_finais_2020 <- gastos %>% filter(mes_lancamento == '2020-12-01') %>% as.data.frame()
@@ -194,3 +194,19 @@ output <- list(
 )
 
 jsonlite::write_json(output, '../metro.json')
+
+
+
+# verificacoes ------------------------------------------------------------
+
+gastos_nome <- dados_raw %>%
+  filter(fase_da_despesa == "Pagamento") %>%   #, !is.na(agrupamento)) %>%
+  mutate(mes_lancamento = as_date(mes_lancamento),
+         agrupamento = replace_na(agrupamento, 'sem grupo')) %>%
+  group_by(agrupamento, mes_lancamento, nome_do_gasto, instrumento_inicial) %>%
+  ungroup() %>%
+  group_by(nome_do_gasto, mes_lancamento) %>%
+  summarise(gasto = sum(gasto_item)) %>%
+  as.data.frame() %>%
+  filter(mes_lancamento == "2020-12-01")
+
