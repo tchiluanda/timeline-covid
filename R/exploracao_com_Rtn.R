@@ -8,7 +8,7 @@ library(readxl)
 
 loadfonts()
 
-dados_raw <- read.csv('dados_timeline_rtn2.csv')
+dados_raw <- read.csv('dados_timeline_rtn.csv')
 
 dados_detalhados_instrumentos <- read_excel('dados_instrumentos.xlsx')
 
