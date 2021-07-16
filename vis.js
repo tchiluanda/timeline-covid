@@ -793,7 +793,7 @@ const vis = {
 
                         let raw_data = e.target.__data__[campo];
 
-                        if (campo == 'date') raw_data = d3.timeFormat("de %d de %B de %Y")(raw_data);
+                        if (campo == 'date') raw_data = d3.timeFormat("%d de %B de %Y")(raw_data);
 
                         el.innerHTML = raw_data;
 

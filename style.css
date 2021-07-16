@@ -47,6 +47,12 @@ header.logo img {
 
 /* listas */
 
+ul {
+
+    padding-left: 20px;
+
+}
+
 li::marker {
 
     color: var(--darker);
@@ -89,6 +95,30 @@ div.abertura {
 section {
 
     margin-top: 3rem;
+
+
+}
+
+footer {
+
+    color: var(--background2);
+    background-color: var(--darker);
+
+}
+
+.dados-codigos {
+
+    font-family: Lato;
+    font-size: .9rem;
+    max-width: 32rem;
+    margin: 0 auto;
+    padding: 2rem 10px;
+
+}
+
+.dados-codigos h2 {
+
+    margin-top: 0;
 
 }
 
@@ -432,6 +462,12 @@ button#toggle-modo {
 .tooltip-instrumento * {
 
     margin: 0;
+
+}
+
+.tooltip-instrumento p {
+
+    margin-bottom: .5rem;
 
 }
 
