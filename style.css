@@ -133,7 +133,7 @@ svg#background {
     width: 100%;
     min-height: 100vh;
     z-index: -1;
-    margin-left: calc( 35vw - 0.35*32rem - 200px );
+    /*margin-left: calc( 35vw - 0.35*32rem - 200px );*/
 
 }
 
@@ -230,7 +230,7 @@ select#tipo-valor {
 
 .metro-wrapper {
 
-    flex: 0 0 max(10px, 0.7*100vw - 0.7*32rem);
+    flex: 0 0 min(100vw, 400px);/*max(10px, 0.7*100vw - 0.7*32rem);*/
     /* igual à margem esquerda acima de .margenzona acima*/
 
     /* isso aqui para deixar a visualização sempre com 400px */

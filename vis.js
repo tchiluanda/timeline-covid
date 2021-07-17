@@ -507,6 +507,9 @@ const vis = {
                 const x = vis.metro.scales.x;
                 const y = vis.metro.scales.y;
 
+                const wrapper = document.querySelector(vis.metro.refs.container);
+                const margin_left = +window.getComputedStyle(wrapper).getPropertyValue('margin-left').slice(0,-2)
+
                 const data = {};
 
                 extremos.forEach(linha => {
@@ -515,7 +518,7 @@ const vis = {
 
                         {
                             y : margin.top/2,
-                            x : vis.line.x
+                            x : vis.line.x - margin_left
                         },
 
                         {
