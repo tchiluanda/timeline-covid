@@ -323,6 +323,13 @@ g.axis text {
 
 }
 
+g.axis g.tick.highlight { 
+
+    color: var(--darker);
+    font-weight: 600;
+
+}
+
 path.streamgraph[data-agrupamento="Proteção Social"] { fill: var(--protecao); }
 path.metro-lines[data-agrupamento="Proteção Social"] { stroke: var(--protecao); }
 span[data-agrupamento="Proteção Social"] { background-color: var(--protecao); }
@@ -341,9 +348,9 @@ span[data-agrupamento="Medidas Federativas"] { background-color: var(--federativ
 
 path.streamgraph[data-agrupamento="sem grupo"] { fill: var(--line); }
 
-/* vis legenda */
+/* vis eixo_x */
 
-.legenda {
+.eixo-x {
 
     position: absolute;
     bottom: 0;
@@ -353,7 +360,7 @@ path.streamgraph[data-agrupamento="sem grupo"] { fill: var(--line); }
 
 }
 
-.legenda [data-legenda] {
+.eixo-x [data-eixo_x] {
 
     --base-height: 20px;
 
@@ -362,21 +369,21 @@ path.streamgraph[data-agrupamento="sem grupo"] { fill: var(--line); }
     border-top: none;
 }
 
-[data-legenda="maior"] {
+[data-eixo_x="maior"] {
 
     height: calc(var(--base-height) * 3);
     width: 80%;
 
 }
 
-[data-legenda="meio"] {
+[data-eixo_x="meio"] {
 
     height: calc(var(--base-height) * 2);
     width: 60%;
 
 }
 
-[data-legenda="menor"] {
+[data-eixo_x="menor"] {
 
     height: var(--base-height);
     width: 40%;
@@ -384,7 +391,7 @@ path.streamgraph[data-agrupamento="sem grupo"] { fill: var(--line); }
 
 }
 
-[data-legenda]::after {
+[data-eixo_x]::after {
 
     content: attr(data-valor);
     display: inline-block;
@@ -393,6 +400,21 @@ path.streamgraph[data-agrupamento="sem grupo"] { fill: var(--line); }
     font-size: 10px;
     font-family: Lato;
     font-weight: 400;
+
+}
+
+/* legenda stream */
+
+.regua-legenda {
+
+    transition: all .25s;
+    stroke: var(--line);
+
+}
+
+.escondida {
+
+    opacity: 0;
 
 }
 

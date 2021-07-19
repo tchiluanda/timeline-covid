@@ -292,6 +292,60 @@ const vis = {
 
         },
 
+        regua_legenda : {
+
+            ref : '.regua-legenda',
+
+            svg : 'svg.stream',
+
+            init : function() {
+
+                const svg = d3.select(vis.stream.regua_legenda.svg);
+
+                const m = vis.stream.sizes.margins;
+
+                svg
+                  .append('line')
+                  .classed('regua-legenda', true)
+                  .classed('escondida', true)
+                  .attr('y1', 0)
+                  .attr('y2', 0)
+                  .attr('x2', vis.stream.sizes.width - m.right)
+                  .attr('x1', m.left + 10)
+                ;
+
+            },
+
+            update : function(date) {
+
+                const y = vis.stream.scales.y;
+
+                const regua = d3.select(vis.stream.regua_legenda.ref);
+
+                if (date) {
+
+                    regua
+                     .classed('escondida', false)
+                     .attr('transform', `translate(0,${y(date)})`);
+
+                } else {
+
+                    regua
+                      .classed('escondida', true);
+
+                }
+
+            },
+
+            hide : function() {
+
+
+            }
+
+            // o listener está em vis.interacoes
+
+        },
+
         axis : function() {
 
             const margin = vis.stream.sizes.margins;
@@ -368,11 +422,11 @@ const vis = {
               .duration(1000)
               .attr('d', area);
 
-            vis.stream.faz_legenda(option);
+            vis.stream.faz_eixo_x(option);
 
         },
 
-        faz_legenda : function(mensal_ou_acumulado) {
+        faz_eixo_x : function(mensal_ou_acumulado) {
 
             const dominio = vis.stream.scales.x.domain()[1] - vis.stream.scales.x.domain()[0];
             const range = vis.stream.scales.x.range()[1] - vis.stream.scales.x.range()[0];
@@ -385,7 +439,7 @@ const vis = {
 
             console.log(dominio, range, scale_w(100e9));
 
-            const divs = document.querySelectorAll('[data-legenda]');
+            const divs = document.querySelectorAll('[data-eixo_x]');
 
             const breakpoints = mensal_ou_acumulado == "acumulado" 
             ? [500, 300, 100]
@@ -915,6 +969,45 @@ const vis = {
 
             }
 
+        },
+
+        hover_meses : {
+            
+            monitora : function() {
+
+                const ticks = document.querySelectorAll('g.axis g.tick');
+
+                ticks.forEach(
+                    
+                    tick => {
+                        
+                        tick.addEventListener('mouseenter', vis.interacoes.hover_meses.enter);
+                        tick.addEventListener('mouseleave', vis.interacoes.hover_meses.exit);
+
+                    }
+                );
+
+
+            },
+
+            enter : function(e) {
+
+                d3.select(this).classed('highlight', true);
+
+                const date = d3.select(this).datum();
+                vis.stream.regua_legenda.update(date);
+
+            },
+
+            exit : function(e) {
+
+                d3.select('g.axis g.tick.highlight').classed('highlight', false);
+
+                console.log('saiu');
+                vis.stream.regua_legenda.update();
+
+            }
+
         }
 
 
@@ -1006,7 +1099,10 @@ const vis = {
             vis.stream.area.set();
             vis.stream.draw();
             vis.stream.axis();
-            vis.stream.faz_legenda('acumulado');
+            vis.stream.faz_eixo_x('acumulado');
+            vis.stream.regua_legenda.init();
+
+            vis.interacoes.hover_meses.monitora();
 
             vis.metro.sizes.get();
             vis.metro.sizes.set();
