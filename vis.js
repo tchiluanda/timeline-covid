@@ -348,6 +348,18 @@ const vis = {
                          vis.data.stacked :
                          vis.data.stacked_mensal;
 
+            // update scales
+
+            vis.stream.scales.x.domain(
+                [
+                    d3.min(data, d => d3.min(d, d => d[0])), 
+                    d3.max(data, d => d3.max(d, d => d[1]))
+                ]);
+            
+            // update area generator
+
+            vis.stream.area.set();
+        
             const area = vis.stream.area.generator;
 
             d3.selectAll('path.streamgraph')
@@ -356,9 +368,11 @@ const vis = {
               .duration(1000)
               .attr('d', area);
 
+            vis.stream.faz_legenda(option);
+
         },
 
-        faz_legenda : function() {
+        faz_legenda : function(mensal_ou_acumulado) {
 
             const dominio = vis.stream.scales.x.domain()[1] - vis.stream.scales.x.domain()[0];
             const range = vis.stream.scales.x.range()[1] - vis.stream.scales.x.range()[0];
@@ -373,7 +387,9 @@ const vis = {
 
             const divs = document.querySelectorAll('[data-legenda]');
 
-            const breakpoints = [500, 300, 100];
+            const breakpoints = mensal_ou_acumulado == "acumulado" 
+            ? [500, 300, 100]
+            : [100,  60,  20];
 
             breakpoints.forEach( (valor, i) => {
 
@@ -991,7 +1007,7 @@ const vis = {
             vis.stream.area.set();
             vis.stream.draw();
             vis.stream.axis();
-            vis.stream.faz_legenda();
+            vis.stream.faz_legenda('acumulado');
 
             vis.metro.sizes.get();
             vis.metro.sizes.set();
