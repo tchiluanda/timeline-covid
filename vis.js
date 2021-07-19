@@ -991,8 +991,8 @@ const vis = {
         begin : function() {
 
 
-            vis.data.calcula_totais(); // para popular o texto
-            vis.texto.popula_totais();
+            //vis.data.calcula_totais(); // para popular o texto
+            //vis.texto.popula_totais();
 
             vis.data.stacked  = vis.data.make_stack(vis.data.raw);
             vis.data.stacked_mensal  = vis.data.make_stack(vis.data.mensal);
