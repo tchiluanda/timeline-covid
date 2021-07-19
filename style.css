@@ -183,6 +183,7 @@ span[data-agrupamento] {
     color: var(--background2);
     font-family: Lato;
     font-weight: 300;
+    display: inline-block;
 
 }
 

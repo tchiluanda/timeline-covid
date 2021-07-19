@@ -214,7 +214,7 @@ const vis = {
 
                 const cont = document.querySelector(vis.stream.refs.container);
 
-                this.width = +window.getComputedStyle(cont).getPropertyValue("width").slice(0,-2)
+                this.width = +window.getComputedStyle(cont).getPropertyValue("width").slice(0,-2);
 
             },
 
@@ -464,7 +464,6 @@ const vis = {
                 // x
 
                 const dominio = vis.data.metro.extremos.map(d => d.agrupamento);
-
 
 
                 const largura_necessaria = dominio.length * 20;
@@ -1029,7 +1028,94 @@ const vis = {
             vis.interacoes.botao_modo.monitora();
             vis.interacoes.tooltips.monitora();
 
+        },
 
+        resize : function() {
+
+            // //  não está sendo usado // // 
+
+            // update metro scale
+
+            const cont_metro = document.querySelector(vis.metro.refs.container);
+            const width_metro = +window.getComputedStyle(cont_metro).getPropertyValue("width").slice(0,-2);
+            const dominio = vis.data.metro.extremos.map(d => d.agrupamento);
+            const largura_necessaria = dominio.length * 20;
+
+            const range_metro = [
+
+                (width_metro - largura_necessaria) / 2,
+                width_metro - (width_metro - largura_necessaria) / 2,
+
+            ];
+
+            vis.metro.scales.x.range(range_metro);
+
+            // update metro
+
+            const svg = d3.select(vis.metro.refs.svg);
+            const svg_el = document.querySelector(vis.metro.refs.svg);
+            const svg_width = +window.getComputedStyle(svg_el).getPropertyValue('width').slice(0,-2)
+
+            const extremos = vis.data.metro.extremos;
+            const margin_metro = vis.metro.sizes.margins;
+
+            const x = vis.metro.scales.x;
+            const y = vis.metro.scales.y;
+
+            const data_metro = {};
+
+            extremos.forEach(linha => {
+
+                data_metro[linha.agrupamento] = [
+
+                    {
+                        y : margin_metro.top/2,
+                        x : svg_width/2 - vis.line.stroke//vis.line.x - margin_left
+                        // aqui tô confiando no css, que calculou a largura do wrapper como sendo igual à margem esquerda do texto acima.
+                    },
+
+                    {
+
+                        y : y(linha.date_inicial),
+                        x : x(linha.agrupamento)
+
+                    },
+
+                    {
+
+                        y : y(linha.date_final),
+                        x : x(linha.agrupamento)
+                    }
+
+                ];
+
+            });
+
+            const line_gen = d3.line()
+              .x(d => d.x)
+              .y(d => d.y)
+              .curve(d3.curveBumpY);
+
+            extremos.forEach(serie => {
+
+                const agrupamento = serie.agrupamento;
+
+                svg
+                    .select('path[data-agrupamento="' + agrupamento + '"]')
+                    .datum(data_metro[agrupamento])
+                    .attr('d', line_gen)
+            })
+
+            // update stream scale
+
+            const margin = vis.stream.sizes.margins;
+
+            const cont_stream = document.querySelector(vis.stream.refs.container);
+            const width_stream = +window.getComputedStyle(cont_stream).getPropertyValue("width").slice(0,-2);
+
+            vis.stream.scales.x.range([margin.left, width_stream - margin.right]);
+
+            // update stream chart
 
         }
 
