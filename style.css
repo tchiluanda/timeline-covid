@@ -290,7 +290,7 @@ select#tipo-valor {
 
 .metro-instrumentos-destaque {
 
-    fill: var(--background);;
+    fill: var(--background);
 
 }
 
@@ -319,7 +319,7 @@ g.axis {
 g.axis text {
 
     font-family: Lato;
-    font-weight: 200;
+    stroke: none;
 
 }
 
