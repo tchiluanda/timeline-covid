@@ -418,6 +418,15 @@ path.streamgraph[data-agrupamento="sem grupo"] { fill: var(--line); }
 
 }
 
+.legenda-stream {
+
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 200px; 
+
+}
+
 /* anotaçoes */
 
 .metro-anotacoes-fixas {
