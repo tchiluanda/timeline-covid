@@ -424,6 +424,23 @@ path.streamgraph[data-agrupamento="sem grupo"] { fill: var(--line); }
     top: 0;
     left: 0;
     width: 200px; 
+    /*background-color: var(--background);*/
+
+}
+
+.legenda-stream span[data-agrupamento] {
+
+    font-size: .6rem;
+    width: 100%;
+    min-width: 125px;
+
+}
+
+.legenda-stream span[data-agrupamento="sem grupo"] {
+
+    background-color: var(--line);
+    color: var(--text);
+    text-transform: uppercase;
 
 }
 

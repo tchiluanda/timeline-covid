@@ -314,26 +314,58 @@ const vis = {
                   .attr('x1', m.left + 10)
                 ;
 
+                const legenda_el = document.querySelector('.legenda-stream');
+
+                legenda_el.style.left = (m.left + 10) + 'px';
+
+
+
             },
 
             update : function(date) {
 
                 const y = vis.stream.scales.y;
+                const pos_y = Math.round(y(date));
 
                 const regua = d3.select(vis.stream.regua_legenda.ref);
 
+                const legenda_el = document.querySelector('.legenda-stream');
+
                 if (date) {
+
+                    console.log(pos_y, legenda_el);
 
                     regua
                      .classed('escondida', false)
-                     .attr('transform', `translate(0,${y(date)})`);
+                     .attr('transform', `translate(0, ${pos_y})`);
+
+                    legenda_el.classList.remove('escondida');
+                    legenda_el.style.transform = `translate(0, calc(${pos_y}px - 50%))`;
+
+                     
 
                 } else {
 
                     regua
                       .classed('escondida', true);
 
+                    legenda_el.classList.add('escondida');
+
                 }
+
+                // update values
+
+                const tipo_valor = document.querySelector('#tipo-valor').value;
+
+                const data = tipo_valor == 'acumulado' ?
+                  vis.data.raw :
+                  vis.data.mensal;
+
+                const mini_data = data.filter(d => d.date == date);
+
+                console.log(mini_data);
+
+                
 
             },
 
