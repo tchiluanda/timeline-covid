@@ -333,16 +333,12 @@ const vis = {
 
                 if (date) {
 
-                    console.log(pos_y, legenda_el);
-
                     regua
                      .classed('escondida', false)
                      .attr('transform', `translate(0, ${pos_y})`);
 
                     legenda_el.classList.remove('escondida');
                     legenda_el.style.transform = `translate(0, calc(${pos_y}px - 50%))`;
-
-                     
 
                 } else {
 
@@ -355,17 +351,35 @@ const vis = {
 
                 // update values
 
-                const tipo_valor = document.querySelector('#tipo-valor').value;
+                if (date) {
 
-                const data = tipo_valor == 'acumulado' ?
-                  vis.data.raw :
-                  vis.data.mensal;
+                    const date_br = d3.timeFormat("%B de %Y")(date);
 
-                const mini_data = data.filter(d => d.date == date);
+                    const tipo_valor = document.querySelector('#tipo-valor').value;
+    
+                    const data = tipo_valor == 'acumulado' ?
+                      vis.data.raw :
+                      vis.data.mensal; 
+    
+                    const mini_data = data.filter(d => d.data_br == date_br)[0];
 
-                console.log(mini_data);
+                       // campos de valor
+                    const campos = document.querySelectorAll('.legenda-stream [data-agrupamento]');
+    
+                    campos.forEach(campo => {
+    
+                        const agrupamento = campo.dataset.agrupamento;
+    
+                        const valor = mini_data[agrupamento]/1e9;
+    
+                        const campo_valor = campo.querySelector('.valor');
+    
+                        campo_valor.innerHTML = valor == 0 ? "0" : "R$ " + valor.toFixed(1) + "bi";
+                        
+    
+                    })
 
-                
+                }
 
             },
 

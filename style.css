@@ -408,7 +408,7 @@ path.streamgraph[data-agrupamento="sem grupo"] { fill: var(--line); }
 .regua-legenda {
 
     transition: all .25s;
-    stroke: var(--line);
+    stroke: var(--text);
 
 }
 
@@ -423,16 +423,15 @@ path.streamgraph[data-agrupamento="sem grupo"] { fill: var(--line); }
     position: absolute;
     top: 0;
     left: 0;
-    width: 200px; 
+    width: 12.5rem; 
     /*background-color: var(--background);*/
 
 }
 
 .legenda-stream span[data-agrupamento] {
 
-    font-size: .6rem;
+    font-size: .7rem;
     width: 100%;
-    min-width: 125px;
 
 }
 
@@ -441,6 +440,13 @@ path.streamgraph[data-agrupamento="sem grupo"] { fill: var(--line); }
     background-color: var(--line);
     color: var(--text);
     text-transform: uppercase;
+
+}
+
+.legenda-stream [data-agrupamento] {
+
+    display: flex;
+    justify-content: space-between;
 
 }
 
