@@ -323,6 +323,12 @@ g.axis text {
 
 }
 
+g.axis .tick {
+
+    cursor: pointer;
+
+}
+
 g.axis g.tick.highlight { 
 
     color: var(--darker);
