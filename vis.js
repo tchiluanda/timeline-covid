@@ -898,7 +898,7 @@ const vis = {
                 const y = vis.metro.scales.y;
                 const sizes = vis.anotacoes.sizes;
 
-                const campos = ['date', 'anotacao', 'ementa', 'instrumento', 'link'];
+                const campos = ['date', 'anotacao', 'ementa', 'instrumento', 'link', 'classificacao_painel'];
 
                 campos.forEach(campo => {
 
