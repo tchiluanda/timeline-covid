@@ -433,7 +433,7 @@ path.streamgraph[data-agrupamento="sem grupo"] { fill: var(--line); }
     position: absolute;
     top: 0;
     left: 0;
-    width: 12.5rem; 
+    width: 15rem; 
     /*background-color: var(--background);*/
 
 }
